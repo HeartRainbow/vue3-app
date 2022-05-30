@@ -3,8 +3,6 @@
 import IncrementDemo from '../src/components/IncrementDemovue';
 import { mount } from '@vue/test-utils';
 
-
-
 describe('IncrementDemoVue', () => {
   it('SFC: increments value on click', async () => {
     // render component.
