@@ -1,0 +1,6 @@
+Default:
+  env: dev
+  baseUrl: http://localhost:30000
+  port: 8088
+  containerPort: 80
+  name: vue3-template
