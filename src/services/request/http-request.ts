@@ -24,7 +24,7 @@ export default class HttpRequest {
   //   return this.m_Instance.request<IResponseData, T>(config);
   // }
 
-  request<T>(config: IRequestConfig): Promise<T> {
+  public request<T>(config: IRequestConfig): Promise<T> {
     return new Promise((resolve, reject) => {
       if (config.interceptor?.requestInterceptor)
         config = config.interceptor.requestInterceptor(config);
