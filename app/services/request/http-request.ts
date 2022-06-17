@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, } from 'axios';
-import { IRequestConfig, IRequestInterceptor, IResponseData } from '@/contract';
+import { IRequestConfig, IRequestInterceptor, IResponseData } from '../../contract';
 
 export default class HttpRequest {
   private m_Instance: AxiosInstance;
