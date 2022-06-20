@@ -1,3 +1,9 @@
+/**
+ * 读取文件
+ * 
+ * @param file 
+ * @returns 
+ */
 export async function readFile(file: File) {
   const reader = new FileReader();
   const promise = new Promise((resolve, reject) => {
@@ -10,33 +16,165 @@ export async function readFile(file: File) {
     };
   })
   reader.readAsText(file, 'UTF-8');
-  return promise
+  return promise;
 }
 
 
-export function deepClone(obj: { [key: string]: any } = {}, map: Map<{ [key: string]: any }, any> = new Map) {
-  if (typeof obj !== 'object') return obj;
-  if (map.get(obj)) return map.get(obj);
+/**
+ * 深拷贝
+ * 
+ * @param data 
+ * @param map 
+ * @returns 
+ */
+export function deepClone(data: { [key: string]: any } = {}, map: Map<{ [key: string]: any }, any> = new Map) {
+  if (typeof data !== 'object') return data;
+  if (map.get(data)) return map.get(data);
 
   let result: { [key: string]: any } = {};
-  if (obj instanceof Array || Object.prototype.toString.call(obj) === '[object Array]')
+  if (data instanceof Array || Object.prototype.toString.call(data) === '[object Array]')
     result = [];
 
-  map.set(obj, result);
-  for (const key in obj) {
-    if (Object.hasOwnProperty.call(obj, key))
-      result[key] = deepClone(obj[key], map);
+  map.set(data, result);
+  for (const key in data) {
+    if (Object.hasOwnProperty.call(data, key))
+      result[key] = deepClone(data[key], map);
   }
-
   return result;
 }
 
 
-export function loadFile(path: string) { // name为文件所在位置
-  let xhr = new XMLHttpRequest(),
-    okStatus = document.location.protocol === "file:" ? 0 : 200;
+export function loadFile(path: string) {
+  const xhr = new XMLHttpRequest();
+  const okStatus = document.location.protocol === "file:" ? 0 : 200;
   xhr.open('GET', path, false);
   xhr.overrideMimeType("text/html;charset=utf-8");//默认为utf-8
   xhr.send(null);
   return xhr.status === okStatus ? xhr.responseText : null;
 }
+
+/**
+ * 防抖函数
+ * 
+ * @param func 待处理函数
+ * @param wait 时间间隔
+ * @param immediate 是否立即执行
+ * @returns 
+ */
+export function debounce<T extends Function>(func: T, wait: number, immediate: boolean) {
+  let result;
+  let timeout = null;
+
+  return function () {
+    const context = this;
+    const args = arguments;
+
+    if (timeout) clearTimeout(timeout);
+    if (!timeout && immediate)
+      result = func.apply(context, args);
+
+    timeout = setTimeout(() => {
+      result = func.apply(context, args);
+    }, wait);
+
+    return result as T;
+  };
+}
+
+/**
+ * 节流函数
+ * 
+ * @param func 待处理函数
+ * @param wait 时间间隔
+ * @returns 
+ */
+export function throttle<T extends Function>(func: T, wait: number) {
+  let result;
+  let timeout = null;
+  let start = new Date().getTime();
+
+  return function () {
+    const context = this;
+    const args = arguments;
+    const end = new Date().getTime();
+
+    clearTimeout(timeout);
+    if (end - start > wait) {
+      result = func.apply(context, args);
+      start = end;
+    } else {
+      timeout = setTimeout(() => {
+        timeout = null;
+        result = func.apply(context, args);
+      }, wait);
+    }
+    return result as T;
+  };
+}
+
+
+export class Ajax {
+  private m_Ajax;
+
+  constructor() {
+    if (!this.m_Ajax) this.m_Ajax = new XMLHttpRequest();
+    return this;
+  }
+
+  /**
+   * GET请求
+   * 
+   * @param url 
+   * @param data 
+   * @returns 
+   */
+  public get(url, data) {
+    return new Promise((resolve, reject) => {
+      let dataStr = '';
+      Object.keys(data).forEach(key => {
+        dataStr += key + '=' + data[key] + '&';
+      });
+      url = url + '?' + dataStr;
+      this.m_Ajax.open('GET', url, true);
+      this.m_Ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      this.m_Ajax.send();
+      this.onChange(resolve, reject);
+    });
+  }
+
+  /**
+   * POST请求
+   * 
+   * @param url 
+   * @param data 
+   * @returns 
+   */
+  public post(url, data) {
+    return new Promise((resolve, reject) => {
+      this.m_Ajax.open('POST', url, true);
+      this.m_Ajax.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
+      this.m_Ajax.send(data);
+      this.onChange(resolve, reject);
+    });
+  }
+
+  /**
+   * 状态监听
+   * 
+   * @param resolve 
+   * @param reject 
+   */
+  public onChange(resolve, reject) {
+    this.m_Ajax.onreadystatechange = function () {
+      if (this.m_Ajax.readyState === 4) {
+        if (this.m_Ajax.status === 200) {
+          console.log(this.m_Ajax.responseText);
+          resolve(this.m_Ajax.responseText);
+        } else {
+          reject("HTTP error", this.m_Ajax.status, this.m_Ajax.statusText)
+          console.log("HTTP error", this.m_Ajax.status, this.m_Ajax.statusText);
+        }
+      };
+    };
+  }
+};
