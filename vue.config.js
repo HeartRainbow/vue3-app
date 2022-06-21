@@ -99,23 +99,23 @@ module.exports = {
         // 忽略打包配置
         config.externals = cdn.externals;
 
-        // // 生产环境配置
-        // if (process.env.NODE_ENV === "production") {
-        //     // 代码压缩去除console.log
-        //     config.plugins.push(
-        //         new TerserPlugin({
-        //             terserOptions: {
-        //                 ecma: undefined,
-        //                 parse: {},
-        //                 compress: {
-        //                     drop_console: true,
-        //                     drop_debugger: false,
-        //                     pure_funcs: ["console.log"] // 移除console
-        //                 }
-        //             }
-        //         })
-        //     );
-        // }
+        // 生产环境配置
+        if (process.env.NODE_ENV === "production") {
+            // 代码压缩去除console.log
+            config.plugins.push(
+                new TerserPlugin({
+                    terserOptions: {
+                        ecma: undefined,
+                        parse: {},
+                        compress: {
+                            drop_console: true,
+                            drop_debugger: false,
+                            pure_funcs: ["console.log"] // 移除console
+                        }
+                    }
+                })
+            );
+        }
 
         // 开启gzip压缩
         config.plugins.push(
