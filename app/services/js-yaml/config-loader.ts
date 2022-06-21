@@ -8,6 +8,7 @@ import { enum_ } from '../../model';
  * js-yaml配置加载器
  */
 export class JsYamlConfigLoader extends ConfigLoaderBase {
+  
   public async load(mode: enum_.Env) {
     if (mode == enum_.Env.dev)
       return devConfig;
