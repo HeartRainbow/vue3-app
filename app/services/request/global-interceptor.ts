@@ -9,7 +9,9 @@ export class GlobalInterceptor {
   constructor(
     private m_Instance: AxiosInstance,
     private m_Option: IRequestConfig
-  ) { }
+  ) {
+    console.log(this.m_Option);
+  }
 
   /**
    * 请求拦截器

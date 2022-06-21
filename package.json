@@ -1,5 +1,5 @@
 {
-  "name": "vue3-template",
+  "name": "vue3-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,20 +7,22 @@
     "serve": "vue-cli-service serve --mode production",
     "test": "jest",
     "test-c": "jest --coverage",
-    "build": "vue-cli-service build"
+    "build:dev": "vue-cli-service build --mode development",
+    "build:prod": "vue-cli-service build --mode production"
   },
   "dependencies": {
     "axios": "^0.27.2",
     "class-validator": "^0.13.1",
     "core-js": "^3.6.5",
+    "echarts": "^5.3.3",
     "element-plus": "^2.2.6",
     "moment": "^2.29.1",
     "reflect-metadata": "^0.1.13",
     "typedi": "^0.8.0",
-    "vue": "^3.0.0",
-    "vue-class-component": "^8.0.0-0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vue": "^3.2.0",
+    "vue-class-component": "^8.0.0-rc.1",
+    "vue-router": "^4.0.0",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@types/jest": "^27.5.1",

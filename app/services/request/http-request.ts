@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 import { Interceptors } from '.';
 import { IRequestConfig, IRequestInterceptor, IResponseData } from '../../contract';

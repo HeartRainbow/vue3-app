@@ -14,13 +14,13 @@ import store from './store';
 
   createApp(App).use(store).use(router).mount('#app');
 
+
   class Test {
 
     @Inject()
     public JsYamlConfigLoader: ConfigLoaderBase
 
     public async call() {
-      console.log(this.JsYamlConfigLoader.load);
       return await this.JsYamlConfigLoader.load(process.env.NODE_ENV)
     }
   }
