@@ -5,7 +5,7 @@ import { IRequestConfig, IRequestInterceptor } from '../../contract';
  * 实例拦截器
  */
 export class InstanceInterceptor {
-  private m_Interceptor: IRequestInterceptor;
+  private m_Interceptor: IRequestInterceptor | undefined;
 
   constructor(
     private m_Instance: AxiosInstance,
