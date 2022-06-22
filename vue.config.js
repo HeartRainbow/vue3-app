@@ -28,7 +28,7 @@ const cdn = {
 
     // 通过cdn方式使用
     js: [
-        "https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/3.2.0/vue.global.min.js",
+        "https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/3.2.0/vue.runtime.global.prod.js",
         "https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/vuex/4.0.0/vuex.global.min.js",
         "https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue-router/4.0.0/vue-router.global.min.js",
         "https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/axios/0.26.0/axios.min.js",

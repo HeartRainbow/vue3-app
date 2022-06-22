@@ -3,4 +3,4 @@ Default:
   baseUrl: http://localhost:30000
   port: 8089
   containerPort: 80
-  name: vue3-template
+  name: vue3-app

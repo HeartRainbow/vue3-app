@@ -1,4 +1,6 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, } from 'axios';
+
+import { ErrorHandler } from '.';
 import { IRequestConfig } from '../../contract';
 
 /**
@@ -6,11 +8,17 @@ import { IRequestConfig } from '../../contract';
  * 
  */
 export class GlobalInterceptor {
+
+
+  private errorHandler: ErrorHandler;
+
   constructor(
     private m_Instance: AxiosInstance,
     private m_Option: IRequestConfig
   ) {
     console.log(this.m_Option);
+
+    this.errorHandler = new ErrorHandler();
   }
 
   /**
@@ -37,7 +45,10 @@ export class GlobalInterceptor {
         console.log('全局响应拦截器');
         return res.data;
       },
-      (err: any) => err
+      (err: any) => {
+        this.errorHandler.handler(err);
+        return Promise.reject(err);
+      }
     );
   }
 }
