@@ -178,3 +178,54 @@ export class Ajax {
     };
   }
 };
+
+
+/**
+ * 表单检验并定位第一个验证错误
+ * 
+ * @param formName 
+ */
+export function formValidate(formName) {
+  this.$refs[formName].validate(valid => {
+    if (valid) {
+      console.log(valid);
+      return true;
+    } else {
+      this.$nextTick(() => {
+        let isError = document.getElementsByClassName("is-error");
+        isError[0].querySelector("input").focus();
+      });
+      return false;
+    }
+  });
+}
+
+
+
+export function heightToTop(ele) {
+  //ele为指定跳转到该位置的DOM节点
+  let root = document.body
+  let height = 0
+  do {
+    height += ele.offsetTop
+    ele = ele.offsetParent
+  } while (ele !== root)
+  return height
+}
+// 定位element的Erro
+export function eleScrollErro() {
+  this.$nextTick(() => {
+    let isError = document.getElementsByClassName('is-error')
+    // console.log(isError)
+    // alert(isError[0].offsetTop)
+    document
+      .querySelector('.main-container')
+      .scrollTo({ behavior: 'smooth', top: this.heightToTop(isError[0]) - 60 })
+  }, 500)
+}
+// 定位非element的Erro
+export function scrollErro(sectionWp) {
+  document
+    .querySelector('.main-container')
+    .scrollTo({ behavior: 'smooth', top: this.$refs[sectionWp].offsetTop })
+}
