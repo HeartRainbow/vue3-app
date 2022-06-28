@@ -158,6 +158,7 @@ module.exports = {
             },
             postcss: {
                 plugins: [
+                    require('tailwindcss'),
                     autoprefixer()
                 ]
             }

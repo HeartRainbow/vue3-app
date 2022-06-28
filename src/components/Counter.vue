@@ -7,13 +7,13 @@
   </div>
 </template>
 
-<script lang='ts'>
-import { defineComponent, ref, computed } from "vue";
+<script lang="ts">
+import { defineComponent, ref, computed } from 'vue';
 
 export default defineComponent({
-  name: "IncrementDemo",
+  name: 'IncrementDemo',
   props: {
-    factor: { type: Number, default: 1 },
+    factor: { type: Number, default: 1 }
   },
   setup(props) {
     const count = ref(0);
@@ -29,8 +29,8 @@ export default defineComponent({
       reset() {
         count.value = 0;
       },
-      computedCount: computed(() => count.value * props.factor),
+      computedCount: computed(() => count.value * props.factor)
     };
-  },
+  }
 });
 </script>
