@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    .item {
+      flex: 1;
+      height: 120px;
+      margin: 0 10px 10px 0;
+      background-color: rgba(232, 125, 49, 0.856);
+      border-radius: 5px;
+      width: calc((100% - 20px) / 4);
+      /* 这里的10px = (分布个数3-1)*间隙5px, 可以根据实际的分布个数和间隙区调整 */
+      min-width: calc((100% - 20px) / 4);
+      /* 加入这两个后每个item的宽度就生效了 */
+      max-width: calc((100% - 20px) / 4);
+      /* 加入这两个后每个item的宽度就生效了 */
+    }
+
+    .item:nth-child(2n) {
+      /* 去除第3n个的margin-right */
+      margin-right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+
+</body>
+
+</html>

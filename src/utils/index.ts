@@ -186,18 +186,19 @@ export class Ajax {
  * @param formName 
  */
 export function formValidate(formName) {
+  let validated = false;
   this.$refs[formName].validate(valid => {
     if (valid) {
-      console.log(valid);
-      return true;
+      validated = true;
     } else {
       this.$nextTick(() => {
         let isError = document.getElementsByClassName("is-error");
         isError[0].querySelector("input").focus();
       });
-      return false;
+      validated = false;
     }
   });
+  return validated;
 }
 
 
