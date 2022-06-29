@@ -4,9 +4,9 @@
     <button @click="inc">加</button>
     <button @click="dec">减</button>
     <button @click="reset">重置</button>
-  </div>
-  <div>
-    <button @click="userLogin">login</button>
+    <div>
+      <button @click="userLogin">login</button>
+    </div>
   </div>
 </template>
 
@@ -34,12 +34,9 @@ export default defineComponent({
         count.value = 0;
       },
       userLogin() {
-        const res = login();
-        console.log(
-          res.then((r) => {
-            console.log(r);
-          })
-        );
+        login().then((r) => {
+          console.log(r);
+        });
       },
       computedCount: computed(() => count.value * props.factor)
     };
