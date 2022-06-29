@@ -5,10 +5,14 @@
     <button @click="dec">减</button>
     <button @click="reset">重置</button>
   </div>
+  <div>
+    <button @click="userLogin">login</button>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
+import { login } from '../api';
 
 export default defineComponent({
   name: 'IncrementDemo',
@@ -28,6 +32,14 @@ export default defineComponent({
       },
       reset() {
         count.value = 0;
+      },
+      userLogin() {
+        const res = login();
+        console.log(
+          res.then((r) => {
+            console.log(r);
+          })
+        );
       },
       computedCount: computed(() => count.value * props.factor)
     };

@@ -3,13 +3,13 @@ import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Interceptors } from '.';
 import { IRequestConfig, IRequestInterceptor, IResponseData } from '../../contract';
 
-export default class HttpRequest {
+export class HttpRequest {
   private m_Instance: AxiosInstance;
   private config: AxiosRequestConfig;
   public loading: boolean;
   public interceptor?: IRequestInterceptor;
 
-  private constructor(option: IRequestConfig) {
+  constructor(option: IRequestConfig) {
     this.config = option;
     this.interceptor = option.interceptor;
     this.loading = option.loading ?? true;

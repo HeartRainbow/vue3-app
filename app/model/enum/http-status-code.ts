@@ -1,4 +1,4 @@
-export const ErrCode = {
+export const HttpStatusCode = {
   302: '接口重定向了！',
   400: '参数不正确！',
   401: '登录失效！',

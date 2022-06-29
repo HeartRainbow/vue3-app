@@ -4,3 +4,14 @@ Default:
   port: 8089
   containerPort: 80
   name: vue3-app
+Env:
+  development:
+    baseUrl: http://localhost:30000
+    port: 8088
+    containerPort: 80
+    name: vue3-app:dev
+  production:
+    baseUrl: http://localhost:30001
+    port: 8089
+    containerPort: 80
+    name: vue3-app:prod

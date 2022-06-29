@@ -20,5 +20,7 @@ import Card from '@/components/Card.vue';
     Card
   }
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  setup() {}
+}
 </script>
