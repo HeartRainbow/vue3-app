@@ -1,6 +1,5 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, } from 'axios';
-import { ElLoading } from 'element-plus';
-
+// import { OsLoading } from '../../hooks/loading';
 
 import { ErrorHandler } from '.';
 import { IRequestConfig } from '../../contract';
@@ -13,7 +12,7 @@ export class GlobalInterceptor {
 
 
   private errorHandler: ErrorHandler;
-  private loader: any;
+  // private loader: any;
 
 
   constructor(
@@ -25,7 +24,7 @@ export class GlobalInterceptor {
   }
 
   /**
-   * 请求拦截器
+   * 请求拦截
    * 
    */
   public request() {
@@ -33,22 +32,17 @@ export class GlobalInterceptor {
       (res: AxiosRequestConfig) => {
         console.log('全局请求拦截器');
 
-        if (this.m_Option.loading) {
-          this.loader = ElLoading.service({
-            lock: true,
-            text: 'loading....',
-            background: 'rgba(0, 0, 0, 0.4)',
-          })
-        };
+        if (this.m_Option.loading)
+          // OsLoading.open();
 
-        return res;
+          return res;
       },
       (err: any) => err
     );
   }
 
   /**
-   * 响应拦截器
+   * 响应拦截
    * 
   */
   public response() {
@@ -57,7 +51,7 @@ export class GlobalInterceptor {
         console.log('全局响应拦截器');
 
         setTimeout(() => {
-          this.loader?.close()
+          // OsLoading.close();
         }, 1000);
 
         return res.data;

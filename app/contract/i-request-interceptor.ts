@@ -1,8 +1,8 @@
 import { AxiosRequestConfig, AxiosResponse, } from 'axios';
 
 export interface IRequestInterceptor {
-  requestInterceptor: (res: AxiosRequestConfig) => AxiosRequestConfig;
+  requestInterceptor: (reqCfg: AxiosRequestConfig) => AxiosRequestConfig;
   requestInterceptorCatch?: (error: any) => any;
-  responseInterceptor: <T = AxiosResponse>(config: T) => T;
+  responseInterceptor: <T = AxiosResponse>(response: T) => T;
   responseInterceptorCatch?: (error: any) => any;
 }

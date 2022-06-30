@@ -38,19 +38,50 @@ export class HttpRequest {
         })
         .catch((err: any) => {
           reject(err);
-        })
+        });
     })
   }
 
+  /**
+   * GET请求
+   * 
+   * @param url 请求路径
+   * @param params 请求参数
+   * @returns 
+   */
   get<T>(url: string, params?: object): Promise<IResponseData<T>> {
     return this.m_Instance.get(url, { params });
   }
+
+  /**
+   * POST请求
+   * 
+   * @param url 请求路径
+   * @param params 请求参数
+   * @returns 
+   */
   post<T>(url: string, params?: object): Promise<IResponseData<T>> {
     return this.m_Instance.post(url, params);
   }
+
+  /**
+   * PUT请求
+   * 
+   * @param url 请求路径
+   * @param params 请求参数
+   * @returns 
+   */
   put<T>(url: string, params?: object): Promise<IResponseData<T>> {
     return this.m_Instance.put(url, params);
   }
+
+  /**
+   * DELETE请求
+   * 
+   * @param url 请求路径
+   * @param params 请求参数
+   * @returns 
+   */
   delete<T>(url: string, params?: object): Promise<IResponseData<T>> {
     return this.m_Instance.delete(url, { params });
   }

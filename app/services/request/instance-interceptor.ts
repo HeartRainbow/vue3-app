@@ -1,6 +1,7 @@
 import { AxiosInstance } from 'axios';
 import { IRequestConfig, IRequestInterceptor } from '../../contract';
 
+
 /**
  * 实例拦截器
  */
@@ -15,7 +16,7 @@ export class InstanceInterceptor {
   }
 
   /**
-   * 请求拦截器
+   * 请求拦截
    * 
    */
   public request() {
@@ -26,7 +27,7 @@ export class InstanceInterceptor {
   }
 
   /**
-   * 响应拦截器
+   * 响应拦截
    * 
   */
   public response() {

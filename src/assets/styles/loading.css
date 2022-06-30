@@ -1,0 +1,18 @@
+.osloading .el-loading-spinner {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.osloading .el-loading-spinner .path {
+  stroke-width: 3;
+  stroke: #6a49ac;
+}
+
+.osloading .el-loading-spinner::after {
+  content: 'loading...';
+  color: #6a49ac;
+  font-size: 20px;
+}

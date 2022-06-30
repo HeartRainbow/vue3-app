@@ -1,4 +1,6 @@
 import Container, { Inject } from 'typedi';
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
 import { ConfigLoaderBase } from '../app/contract';
 import { initIoC } from '../app/services';
 
@@ -8,6 +10,8 @@ import router from './router';
 import store from './store';
 
 import './assets/styles/tailwind.css';
+import './assets/styles/loading.css';
+
 
 
 
@@ -15,7 +19,7 @@ import './assets/styles/tailwind.css';
   await initIoC();
 
 
-  createApp(App).use(store).use(router).mount('#app');
+  createApp(App).use(ElementPlus).use(store).use(router).mount('#app');
 
 
   class Test {

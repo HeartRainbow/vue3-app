@@ -16,6 +16,6 @@ export class ErrorHandler {
             ElMessage.error("连接超时~");
 
         if (err.code === "ECONNABORTED" || err.message === "Network Error" || !window.navigator.onLine)
-            ElMessage.error("网络已断开，请检查连接~");
+            ElMessage.error("网络已断开，请检查连接~~~");
     }
 }
