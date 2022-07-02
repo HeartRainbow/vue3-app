@@ -19,7 +19,7 @@ export class JsYamlConfigLoader extends ConfigLoaderBase {
    */
   public async load<T>(ctor: new () => T) {
     if (!this.m_Doc) {
-      this.m_Doc = yamlConfig[ctor.name];
+      this.m_Doc = yamlConfig;
     }
     return this.m_Doc[ctor.name] as T;
   }

@@ -1,17 +1,17 @@
 import Container, { Inject } from 'typedi';
-import ElementPlus from 'element-plus';
-import 'element-plus/dist/index.css';
 import { ConfigLoaderBase } from '../app/contract';
+import { config } from '../app/model';
 import { initIoC } from '../app/services';
 
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import ElementPlus from 'element-plus';
 
+import 'element-plus/dist/index.css';
 import './assets/styles/tailwind.css';
 import './assets/styles/loading.css';
-import { config } from '../app/model';
 
 
 
