@@ -1,5 +1,14 @@
+const fs = require("fs");
 const path = require("path");
 const autoprefixer = require("autoprefixer");
+const jsYaml = require("js-yaml");
+
+// 读取config.yaml配置文件
+const doc = jsYaml.load(fs.readFileSync('./config.yaml', 'utf8'));
+const mode = process.env.NODE_ENV.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+
+console.log(doc[mode]);
+
 
 // 引入gzip压缩插件
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
@@ -14,30 +23,6 @@ function resolve(dir) {
     return path.join(__dirname, dir);
 }
 
-// cdn配置
-const cdn = {
-    // 忽略打包的第三方库
-    externals: {
-        vue: "Vue",
-        vuex: "Vuex",
-        "vue-router": "VueRouter",
-        axios: "axios",
-        moment: "moment",
-        echarts: "echarts"
-    },
-
-    // 通过cdn方式使用
-    js: [
-        "https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue/3.2.0/vue.global.js",
-        "https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/vuex/4.0.0/vuex.global.min.js",
-        "https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/vue-router/4.0.0/vue-router.global.min.js",
-        "https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/axios/0.26.0/axios.min.js",
-        "https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/moment.js/2.29.1/moment.min.js",
-        "https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/echarts/5.3.0/echarts.min.js"
-    ],
-
-    css: []
-};
 
 module.exports = {
     publicPath: "./",
@@ -66,7 +51,9 @@ module.exports = {
     },
     chainWebpack: config => {
         config.plugin("html").tap(args => {
-            args[0].cdn = cdn;
+            if(doc[mode].cdn) {
+                args[0].cdn = doc[mode].cdn;
+            }
             args[0].title = "vue3-app";
             args[0].icon = "https://cdn3.iconfinder.com/data/icons/pokemon-go-3/512/pokemon_go_play_game_charcter-128.png";
             return args;
@@ -97,7 +84,7 @@ module.exports = {
     configureWebpack: config => {
 
         // 忽略打包配置
-        config.externals = cdn.externals;
+        config.externals = doc[mode]?.cdn?.externals;
 
         // 生产环境配置
         if (process.env.NODE_ENV === "production") {
