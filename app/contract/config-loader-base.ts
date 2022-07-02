@@ -7,5 +7,5 @@ export abstract class ConfigLoaderBase {
      * 
      * @param ctor 构造函数
      */
-    public abstract load(mode: string): Promise<any>;
+    public abstract load<T>(ctor: new () => T): Promise<T>;
 }

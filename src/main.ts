@@ -11,6 +11,7 @@ import store from './store';
 
 import './assets/styles/tailwind.css';
 import './assets/styles/loading.css';
+import { config } from '../app/model';
 
 
 
@@ -28,7 +29,8 @@ import './assets/styles/loading.css';
     public JsYamlConfigLoader: ConfigLoaderBase
 
     public async call() {
-      return await this.JsYamlConfigLoader.load(process.env.NODE_ENV)
+      const mode = process.env.NODE_ENV.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+      return await this.JsYamlConfigLoader.load(config[mode]);
     }
   }
 

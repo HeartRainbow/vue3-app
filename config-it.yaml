@@ -1,6 +1,0 @@
-Default:
-  baseUrl: http://localhost:30000
-  containerPort: 80
-  env: dev
-  name: vue3-app
-  port: 8088
