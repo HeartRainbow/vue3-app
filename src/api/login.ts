@@ -15,7 +15,7 @@ import { OsLoading } from '../../app/hooks/loading';
 // }
 
 const http = new HttpRequest({
-  baseURL: 'http://10.10.1.9:30120',
+  baseURL: 'http://localhost:30120',
   loading: true,
   interceptor: {
     requestInterceptor(config) {
