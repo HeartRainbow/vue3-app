@@ -36,7 +36,7 @@ const http = new HttpRequest({
       OsLoading.close();
     }
   }
-})
+});
 
 export function login() {
   return http.post('/ih/exchange', {

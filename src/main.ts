@@ -13,15 +13,10 @@ import 'element-plus/dist/index.css';
 import './assets/styles/tailwind.css';
 import './assets/styles/loading.css';
 
-
-
-
 (async () => {
   await initIoC();
 
-
   createApp(App).use(ElementPlus).use(store).use(router).mount('#app');
-
 
   class Test {
 

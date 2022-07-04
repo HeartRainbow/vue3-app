@@ -6,13 +6,14 @@
     <button @click="reset">重置</button>
     <div>
       <button @click="userLogin">login</button>
+    <input id="file" type="file" name="file" multiple @change="uploadFile($event)" >
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
-import { login } from '../api';
+import { login, uploadFile } from '../api';
 
 export default defineComponent({
   name: 'IncrementDemo',
@@ -36,6 +37,11 @@ export default defineComponent({
       userLogin() {
         login().then((r) => {
           console.log(r);
+        });
+      },
+      uploadFile(e) {
+        uploadFile(e).then((r) => {
+        console.log(r);
         });
       },
       computedCount: computed(() => count.value * props.factor)
