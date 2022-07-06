@@ -1,18 +1,23 @@
 import { HttpRequest } from "../../app/services";
 import { OsLoading } from '../../app/hooks/loading';
 
-// export class Login {
+export class Login {
 
-//   userName: string;
+  static userName: string;
 
-//   token: string;
+  public token: string;
 
-//   data: { [key: string]: any };
+  public data: { [key: string]: any };
 
-//   public async call() {
-//     console.log(this.userName);
-//   }
-// }
+  public async call() {
+    // console.log(this.userName);
+  }
+}
+
+const logins = new Login();
+
+console.log(logins, Object.keys(logins));
+
 
 const http = new HttpRequest({
   baseURL: 'http://localhost:30120',

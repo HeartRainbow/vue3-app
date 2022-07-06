@@ -8,6 +8,10 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import ElementPlus from 'element-plus';
+import api from './api';
+
+console.log(api);
+
 
 import 'element-plus/dist/index.css';
 import './assets/styles/tailwind.css';
