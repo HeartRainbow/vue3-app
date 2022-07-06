@@ -26,6 +26,6 @@ Development:
       - https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/echarts/5.3.0/echarts.min.js
 Production:
   baseUrl: http://localhost:30001
-  port: 8089
+  port: 8099
   containerPort: 80
   name: vue3-app:prod

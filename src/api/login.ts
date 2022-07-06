@@ -1,12 +1,11 @@
 import { HttpRequest } from "../../app/services";
 import { OsLoading } from '../../app/hooks/loading';
 import { IApi } from "app/contract";
-import Container, { Inject, Service } from "typedi";
+import Container, { Service } from "typedi";
 
 @Service()
 export default class Login implements IApi {
 
-  @Inject()
   public userName: string;
 
   public token: string;
@@ -35,13 +34,13 @@ const http = new HttpRequest({
       console.log('实例拦截器');
 
       OsLoading.open();
-      return config
+      return config;
     },
     requestInterceptorCatch() { },
     responseInterceptor(res) {
       console.log('res--> ', res);
       OsLoading.close();
-      return res
+      return res;
     },
     responseInterceptorCatch(err) {
       console.log('err--> ', err);
