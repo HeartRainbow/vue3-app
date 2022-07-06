@@ -3,7 +3,7 @@
  * 
  * @param formName 
  */
-export function formValidate(formName) {
+export function formValidate(formName: string) {
     let validated = false;
     this.$refs[formName].validate(valid => {
         if (valid) {

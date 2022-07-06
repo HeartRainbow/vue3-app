@@ -5,7 +5,7 @@
  * @param map 
  * @returns 
  */
-export function deepClone(data: { [key: string]: any } = {}, map: Map<{ [key: string]: any }, any> = new Map) {
+export function deepClone(data: any, map: Map<any, any> = new Map) {
     if (typeof data !== 'object') return data;
     if (map.get(data)) return map.get(data);
 
