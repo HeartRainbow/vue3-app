@@ -1,5 +1,10 @@
 export interface IResponseData<Data = any> {
   /**
+   * 错误码
+   */
+  err: number;
+
+  /**
    * 响应数据
    */
   data: Data;
@@ -7,10 +12,5 @@ export interface IResponseData<Data = any> {
   /**
    * 描述
    */
-  msg: string;
-
-  /**
-   * 错误码
-   */
-  err: number;
+  msg?: string;
 }
