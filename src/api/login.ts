@@ -1,28 +1,28 @@
 import { HttpRequest } from "../../app/services";
 import { OsLoading } from '../../app/hooks/loading';
-import { IApi } from "app/contract";
-import Container, { Service } from "typedi";
+// import { IApi } from "app/contract";
+// import Container, { Service } from "typedi";
 
-@Service()
-export default class Login implements IApi {
+// @Service()
+// export default class Login implements IApi {
 
-  public userName: string;
+//   public userName: string;
 
-  public token: string;
+//   public token: string;
 
-  public data: { [key: string]: any };
+//   public data: { [key: string]: any };
 
-  public async call() {
-    console.log(this.token);
-  }
-}
+//   public async call() {
+//     console.log(this.token);
+//   }
+// }
 
-const login3 = Container.get(Login);
-console.log(login3);
+// const login3 = Container.get(Login);
+// console.log(login3);
 
-const login2 = new Login();
+// const login2 = new Login();
 
-console.log(login2, Object.keys(login2));
+// console.log(login2, Object.keys(login2));
 
 
 const http = new HttpRequest({
