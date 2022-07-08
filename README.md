@@ -20,22 +20,22 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 代码规范
 
-**文件引入**
+### 文件引入
 1. 以首字母按26字母顺序排列；
 2. 路径越近的在前排列；
 3. 第三方包在前，项目自身文件在后；
 4. 包，文件之间间隔一行
 
-## git版本管理规范
+## git规范
 >每次开发新功能，都应该新建一个单独的分支。<br>
 https://ruanyifeng.com/blog/2015/08/git-use-process.html<br>
 https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
 
-**分支命名**
+### 分支命名
 1. 以功能英文描述加短横杠，例:（image-upload-oss）；
 2. 以姓名拼音加横杠拼接，例:（lai-qi-bin）；
 
-**提交规范**
+### 提交规范
 1. 每次提交或新建分支先拉取合并master代码到当前分支；
 2. commit提交信息以（type(scope): desc）例：
    
@@ -59,7 +59,7 @@ https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
     ```
 3. https://segmentfault.com/a/1190000041878613
 
-**常用git命令**
+### 常用git命令
 | Command                     | Description                                     |
 | :---                        |    ----                                         |
 | git add .                   | 将所有修改加入暂存区（包括修改、删除、新增文件）         |
