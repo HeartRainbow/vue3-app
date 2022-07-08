@@ -1,17 +1,15 @@
-import Container, { Inject, Service } from "typedi";
 
 import { HttpRequest } from "../../app/services";
 import { OsLoading } from '../../app/hooks/loading';
-import { config } from '../../app/model';
+import yamlConfig from 'js-yaml-loader!../../config.yaml';
 
-import { ConfigLoaderBase } from "app/contract";
 
-const JsYamlConfigLoader = Container.get<ConfigLoaderBase>(ConfigLoaderBase as any);
-console.log(JsYamlConfigLoader);
 
+const mode = process.env.NODE_ENV.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+const options = yamlConfig[mode];
 
 export const http = new HttpRequest({
-    baseURL: 'http://localhost:30120',
+    baseURL: options.baseURL,
     loading: true,
     interceptor: {
         requestInterceptor(config) {
@@ -34,17 +32,17 @@ export const http = new HttpRequest({
     }
 });
 
-@Service()
-class Test {
+// @Service()
+// class Http {
 
-    @Inject()
-    public JsYamlConfigLoader: ConfigLoaderBase
+//     @Inject()
+//     public JsYamlConfigLoader: ConfigLoaderBase
 
-    public async call() {
-        const mode = process.env.NODE_ENV.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
-        return await this.JsYamlConfigLoader.load(config[mode]);
-    }
-}
+//     public async call() {
+//         const mode = process.env.NODE_ENV.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+//         return await this.JsYamlConfigLoader.load(config[mode]);
+//     }
+// }
 
-  const t1 = Container.get(Test);
-  console.log(t1.call());
+//   const t1 = Container.get(Http);
+//   console.log(t1.call());

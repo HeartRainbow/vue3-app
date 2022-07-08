@@ -3,6 +3,7 @@ export * from './cookie';
 export * from './debounce';
 export * from './deep-clone';
 export * from './form-validate';
+export * from './http';
 export * from './load-file';
 export * from './read-file';
 export * from './scroll-to';

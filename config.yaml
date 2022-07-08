@@ -1,11 +1,11 @@
 Default:
   env: prod
-  baseUrl: http://localhost:30000
+  baseURL: http://localhost:30000
   port: 8089
   containerPort: 80
   name: vue3-app
 Development:
-  baseUrl: http://localhost:30000
+  baseURL: http://localhost:30000
   port: 8088
   containerPort: 80
   name: vue3-app:dev
@@ -25,7 +25,7 @@ Development:
       - https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/moment.js/2.29.1/moment.min.js
       - https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/echarts/5.3.0/echarts.min.js
 Production:
-  baseUrl: http://localhost:30001
+  baseURL: http://localhost:30001
   port: 8099
   containerPort: 80
   name: vue3-app:prod

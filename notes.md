@@ -81,8 +81,10 @@ https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
     https://gitee.com/leerayn/vue-cli3-config
 
 **TypeScript**
+1. 教程<br>
+   https://ts.xcatliu.com/advanced/class-and-interfaces.html
 
-    1.DI容器
+2. 简易DI容器实现<br>
     https://www.cnblogs.com/o2team/archive/2021/08/26/15190818.html
 
 **软件资源**

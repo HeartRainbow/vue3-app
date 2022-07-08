@@ -1,5 +1,4 @@
-import { HttpRequest } from "../../app/services";
-import { OsLoading } from '../../app/hooks/loading';
+import { http } from "../utils";
 // import { IApi } from "app/contract";
 // import Container, { Service } from "typedi";
 
@@ -24,30 +23,6 @@ import { OsLoading } from '../../app/hooks/loading';
 
 // console.log(login2, Object.keys(login2));
 
-
-const http = new HttpRequest({
-  baseURL: 'http://localhost:30120',
-  loading: true,
-  interceptor: {
-    requestInterceptor(config) {
-      console.log(config);
-      console.log('实例拦截器');
-
-      OsLoading.open();
-      return config;
-    },
-    requestInterceptorCatch() { },
-    responseInterceptor(res) {
-      console.log('res--> ', res);
-      OsLoading.close();
-      return res;
-    },
-    responseInterceptorCatch(err) {
-      console.log('err--> ', err);
-      OsLoading.close();
-    }
-  }
-});
 
 export function login() {
   return http.post('/ih/exchange', {
