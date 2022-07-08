@@ -8,3 +8,4 @@ export * from './load-file';
 export * from './read-file';
 export * from './scroll-to';
 export * from './throttle';
+export * from './loop-show-tooltip';
