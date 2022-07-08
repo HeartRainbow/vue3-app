@@ -6,7 +6,7 @@
  *  @param num      //类目数量(原因：循环时达到最大值后，使其从头开始循环)
  *  @param interval //轮播间隔时长
  */
-export function loopShowTooltip(myChart, option, num, interval) {
+export function loopShowTooltip(myChart, _, num, interval) {
   var defaultData = { //设置默认值
     interval: 2000,
     num: 0
