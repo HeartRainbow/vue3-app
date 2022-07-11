@@ -13,9 +13,10 @@ import * as echarts from "echarts";
 // echarts.registerMap('china', china);
 
 //如果需要tooltip自动轮播
-import { loopShowTooltip } from '../../utils';
+import { loopShowTooltip, debounce } from '../../utils';
 
 let chartsArr = [];
+
 export default defineComponent({
     name: "BaseEcharts",
     props: {
@@ -53,23 +54,26 @@ export default defineComponent({
 
         };
         //窗口resize事件
-        const handleChartResize = () => {
-            
+        // const resizeCharts = () => {
+        //     for (var i = 0; i < chartsArr.length; i++) {
+        //         chartsArr[i] && chartsArr[i].resize();
+        //     }
+        // };
+        const resizeCharts = debounce(function () {
             for (var i = 0; i < chartsArr.length; i++) {
-                console.log(chartsArr[i].resize);
                 chartsArr[i] && chartsArr[i].resize();
             }
-        };
+        }, 500);
         onBeforeMount(() => {
             nextTick(() => {
                 initCharts();
             });
         });
         onMounted(() => {
-            window.addEventListener("resize", handleChartResize);
+            window.addEventListener("resize", resizeCharts);
         });
         onBeforeUnmount(() => {
-            window.removeEventListener('resize', handleChartResize);
+            window.removeEventListener('resize', resizeCharts);
         });
         return {
 

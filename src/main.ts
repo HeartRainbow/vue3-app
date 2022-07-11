@@ -8,6 +8,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import ElementPlus from 'element-plus';
+import globalComponents from '@/components';
 import api from './api';
 
 console.log(api);
@@ -23,7 +24,7 @@ import './assets/styles/loading.css';
   const mode = process.env.NODE_ENV.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
   console.log(await JsYamlConfigLoader.load(config[mode]));
 
-  createApp(App).use(ElementPlus).use(store).use(router).mount('#app');
+  createApp(App).use(store).use(router).use(ElementPlus).use(globalComponents).mount('#app');
 
   class Test {
 

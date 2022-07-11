@@ -6,7 +6,7 @@
  * @param immediate 是否立即执行
  * @returns 
  */
-export function debounce<T extends Function>(func: T, wait: number, immediate: boolean) {
+export function debounce<T extends Function>(func: T, wait: number, immediate: boolean = false) {
     let result;
     let timeout = null;
 

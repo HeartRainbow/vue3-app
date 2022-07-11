@@ -1,6 +1,5 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
     <BaseEcharts :options="options" />
   </div>
 </template>
@@ -9,13 +8,13 @@
 import { Options, Vue } from 'vue-class-component';
 import HelloWorld from '@/components/HelloWorld.vue';
 import Card from '@/components/Card.vue';
-import BaseEcharts from '@/components/base-echarts/index.vue';
+// import BaseEcharts from '@/components/base-echarts/index.vue';
 import { reactive } from 'vue';
 
 @Options({
   components: {
     HelloWorld,
-    BaseEcharts,
+    // BaseEcharts,
     Card
   }
 })
@@ -54,3 +53,10 @@ export default class About extends Vue {
 }
 </script>
 <!-- https://class-component.vuejs.org/guide/class-component.html#methods -->
+
+<style lang="scss" scoped>
+  .about {
+      width: 100%;
+      height: calc(100% - 80px);
+  }
+</style>
