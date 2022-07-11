@@ -1,5 +1,6 @@
 <template>
-    <div ref="my-chart" :style="{ height }" />
+    <!-- <div ref="my-chart" class="my-chart" :style="{ height }" /> -->
+    <div ref="my-chart" class="my-chart" />
 </template>
 
 <script lang="ts">
@@ -45,7 +46,7 @@ export default defineComponent({
                     myChart.setOption(props.options);
                     tootipTimer && tootipTimer.clearLoop();
                     tootipTimer = null;
-                    tootipTimer = loopShowTooltip(myChart, props.options, 5, 3000);
+                    tootipTimer = loopShowTooltip(myChart, props.options, 7, 2000);
                 })
                 chartsArr.push(myChart);
             });
@@ -53,7 +54,9 @@ export default defineComponent({
         };
         //窗口resize事件
         const handleChartResize = () => {
+            
             for (var i = 0; i < chartsArr.length; i++) {
+                console.log(chartsArr[i].resize);
                 chartsArr[i] && chartsArr[i].resize();
             }
         };
@@ -66,7 +69,7 @@ export default defineComponent({
             window.addEventListener("resize", handleChartResize);
         });
         onBeforeUnmount(() => {
-            window.removeEventListener('resize', handleChartResize);;
+            window.removeEventListener('resize', handleChartResize);
         });
         return {
 
@@ -76,4 +79,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.my-chart {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+}
 </style>

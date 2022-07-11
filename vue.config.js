@@ -84,7 +84,7 @@ module.exports = {
     configureWebpack: config => {
 
         // 忽略打包配置
-        config.externals = doc[mode]?.cdn?.externals;
+        // config.externals = doc[mode]?.cdn?.externals;
 
         // 生产环境配置
         if (process.env.NODE_ENV === "production") {

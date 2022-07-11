@@ -6,28 +6,17 @@
  *  @param num      //类目数量(原因：循环时达到最大值后，使其从头开始循环)
  *  @param interval //轮播间隔时长
  */
-export function loopShowTooltip(myChart, _, num, interval) {
-  var defaultData = { //设置默认值
-    interval: 2000,
-    num: 0
-  };
-  if (!interval) {
-    interval = defaultData.interval;
-  }
-  if (!num) {
-    num = defaultData.num;
-  }
-
-  var count = 0;
-  var timeTicket = null;
+export function loopShowTooltip(myChart, _, num = 0, interval = 2000) {
+  let count = 0;
+  let timeTicket = null;
   timeTicket && clearInterval(timeTicket);
   timeTicket = setInterval(function () {
     myChart.dispatchAction({
       type: "downplay",
-      seriesIndex: 0 ,//serieIndex的索引值   可以触发多个
+      seriesIndex: 0, //serieIndex的索引值   可以触发多个
       dataIndex: count
     });
-   	count =count  % num;//增加
+   	count = count % num; //增加
     myChart.dispatchAction({
       type: "highlight",
       seriesIndex: 0,
