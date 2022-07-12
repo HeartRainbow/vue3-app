@@ -1,28 +1,4 @@
 import { http } from "../utils";
-// import { IApi } from "app/contract";
-// import Container, { Service } from "typedi";
-
-// @Service()
-// export default class Login implements IApi {
-
-//   public userName: string;
-
-//   public token: string;
-
-//   public data: { [key: string]: any };
-
-//   public async call() {
-//     console.log(this.token);
-//   }
-// }
-
-// const login3 = Container.get(Login);
-// console.log(login3);
-
-// const login2 = new Login();
-
-// console.log(login2, Object.keys(login2));
-
 
 export function login() {
   return http.post('/ih/exchange', {
