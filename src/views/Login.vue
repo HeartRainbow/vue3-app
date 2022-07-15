@@ -1,19 +1,41 @@
 <template>
     <div class="wrap">
-      <div class="form">
+      <div class="wrap-inner">
         <div class="left">
           <video src="../assets/video.mp4" muted loop autoplay></video>
         </div>
         <div class="right">
           <div class="right-con">
-            <h1>NEW HERE SIGN UP</h1>
+            <!-- <h1>NEW HERE SIGN UP</h1>
             <h3>NAME</h3>
             <input class="text" type="text" />
             <h3>EMAIL</h3>
             <input class="text" type="text" />
+            <i class="fas fa-check-circle"></i>
             <h3>PASSWORD</h3>
             <input class="text" type="password" />
-            <input class="btn" type="submit" value="LOGIN" />
+            <i class="fas fa-check-circle"></i>
+            <input class="btn" type="submit" value="LOGIN" /> -->
+
+            <form action="" id="form" class="form">
+              <div class="form-control success">
+                <label for="username">用户名</label>
+                <input type="text" id="username" placeholder="输入用户名" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>错误信息</small>
+              </div>
+              <div class="form-control error">
+                <label for="password">密码</label>
+                <input type="text" id="password" placeholder="输入邮箱" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small>错误信息</small>
+              </div>
+              <div>
+                <input class="btn" type="submit" value="LOGIN" /> -->
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -34,6 +56,8 @@ export default class Login extends Vue {
 
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -42,6 +66,7 @@ export default class Login extends Vue {
 
 body {
   overflow: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
 .wrap {
@@ -70,11 +95,10 @@ body {
   );
 }
 
-.form {
+.wrap-inner {
   width: 50vw;
 //   height: 560px;
   min-height: 50%;
-
   display: flex;
   border-radius: 20px;
   overflow: hidden;
@@ -150,4 +174,57 @@ h3 {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+.form {
+    padding: 30px 40px;
+}
+
+.form button {
+    background-color: #4b88fb;
+    border: 2px solid #4b88fb;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.form-control {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-control input:focus {
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control.success input {
+    border-color: #67C23A;
+}
+
+.form-control.error input {
+    border-color: #F56C6C;
+}
+
 </style>
+
+<!-- https://juejin.cn/post/6966850673329569806 -->
