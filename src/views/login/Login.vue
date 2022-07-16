@@ -1,3 +1,12 @@
+<!-- @route({
+  path: '/login',
+  alias: '登录',
+  name: 'Login',
+  meta: {
+    requiresAuth: true
+  }
+}) -->
+
 <template>
     <div class="wrap">
       <div class="wrap-inner">
@@ -33,7 +42,7 @@
                 <small>错误信息</small>
               </div>
               <div>
-                <input class="btn" type="submit" value="LOGIN" /> -->
+                <input class="btn" type="submit" value="LOGIN" />
               </div>
             </form>
           </div>
@@ -78,21 +87,21 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: linear-gradient(
-    to left top,
-    #d16ba5,
-    #c777b9,
-    #ba83ca,
-    #aa8fd8,
-    #9a9ae1,
-    #8aa7ec,
-    #79b3f4,
-    #69bff8,
-    #52cffe,
-    #41dfff,
-    #46eefa,
-    #5ffbf1
-  );
+  // background-image: linear-gradient(
+  //   to left top,
+  //   #d16ba5,
+  //   #c777b9,
+  //   #ba83ca,
+  //   #aa8fd8,
+  //   #9a9ae1,
+  //   #8aa7ec,
+  //   #79b3f4,
+  //   #69bff8,
+  //   #52cffe,
+  //   #41dfff,
+  //   #46eefa,
+  //   #5ffbf1
+  // );
 }
 
 .wrap-inner {

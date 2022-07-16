@@ -9,7 +9,8 @@
 		"test-c": "jest --coverage",
 		"build:dev": "vue-cli-service build --mode development",
 		"build:prod": "vue-cli-service build --mode production",
-		"version": "ts-node ./app/services/version/index.ts"
+		"version": "ts-node ./app/services/version/index.ts",
+		"router": "ts-node ./app/services/router/generater.ts"
 	},
 	"dependencies": {
 		"axios": "^0.27.2",
