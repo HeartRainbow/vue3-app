@@ -49,4 +49,4 @@ function readFileList(dir, filesList = []) {
     });
     return filesList;
 }
-console.log(readFileList(path.resolve(__dirname, '../../../src/views')));
+console.log(readFileList(path.resolve('src/views')));
