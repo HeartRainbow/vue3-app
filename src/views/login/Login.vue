@@ -1,17 +1,10 @@
-<!-- @route({
-  path: '/login',
-  alias: '登录',
-  name: 'Login',
-  meta: {
-    requiresAuth: true
-  }
-}) -->
+<!-- @route({ "path": "/login", "alias": "登录", "name": "Login", "meta": { "requiresAuth": true } }) -->
 
 <template>
     <div class="wrap">
       <div class="wrap-inner">
         <div class="left">
-          <video src="../assets/video.mp4" muted loop autoplay></video>
+          <video src="../../assets/video.mp4" muted loop autoplay></video>
         </div>
         <div class="right">
           <div class="right-con">

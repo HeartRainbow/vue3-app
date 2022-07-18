@@ -15,12 +15,12 @@ import path from 'path';
 //         const files = fs.readdirSync(dir);
 //         console.log(files);
 //         files.forEach((item, index) => {
-//             const fullPath = path.join(dir, item);
-//             const stat = fs.statSync(fullPath);
+//             const filePath = path.join(dir, item);
+//             const stat = fs.statSync(filePath);
 //             if (stat.isDirectory()) {
 //                 this.readFileList(path.join(dir, item), filesList);
 //             } else {
-//                 filesList.push(fullPath);
+//                 filesList.push(filePath);
 //             }
 //         });
 //         return filesList;
@@ -34,18 +34,34 @@ import path from 'path';
 // var filesList = [];
 // readFileList(__dirname,filesList);
 // console.log(filesList);
-
-function readFileList(dir, filesList = []) {
+let id = 0;
+function readFileList(dir, filesList = [], pid = 0) {
     const files = fs.readdirSync(dir);
     console.log(files);
     files.forEach((item, _) => {
-        const fullPath = path.join(dir, item);
-        const stat = fs.statSync(fullPath);
+        const filePath = path.join(dir, item);
+        const stat = fs.statSync(filePath);
         if (stat.isDirectory()) {
+            pid = id;
             readFileList(path.join(dir, item), filesList);
         } else {
-            filesList.push(fullPath);
+            if (item === 'index.vue') {
+                console.log(1111);
+                
+                pid = pid;
+                return;
+            }
+            let content = fs.readFileSync(path.resolve(filePath), 'utf8');
+            const matchStr = content.match(/@route\([\s\S]*?\)/g);
+            if(!matchStr) return;
+            const route = JSON.parse(matchStr[0].match(/\{[^]*\}/g)[0]);
+            // console.log(JSON.parse(matchStr[0].match(/\{[^]*\}/g)[0]));
+            route.id = id;
+            route.pid = pid;
+            route.component = `() => import(/* webpackChunkName: "${item.split('.')[0]}" */ '@/${filePath.substr(filePath.indexOf("views"),filePath.length)}')`
+            filesList.push(route);
         }
+        id++;
     });
     return filesList;
 }

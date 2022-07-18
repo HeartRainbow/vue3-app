@@ -11,7 +11,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/about',
     name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
   },
   {
     path: '/counter',
@@ -21,13 +21,25 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/login/Login.vue')
   }
 ];
 
 const router = createRouter({
   history: createWebHashHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior: (to, from, savedPosition) => {
+    console.log(to, from, savedPosition);
+    if (savedPosition) {
+      return new Promise((resolve, _reject) => {
+        setTimeout(() => {
+          resolve(savedPosition)
+        }, 500)
+      })
+    } else {
+      return { left: 0, top: 0 }
+    }
+  }
 });
 
 // router.beforeEach((to, from, next) => {

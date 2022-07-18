@@ -1,3 +1,6 @@
+<!-- @route({ "path": "/home", "alias": "首页", "name": "Home", "meta": { "requiresAuth": true } }) -->
+
+
 <template>
   <div class="home">
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" /> -->
