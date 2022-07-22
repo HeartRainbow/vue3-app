@@ -34,7 +34,7 @@ import path from 'path';
 // var filesList = [];
 // readFileList(__dirname,filesList);
 // console.log(filesList);
-let id = 0;
+let id = 1;
 function readFileList(dir, filesList = [], pid = 0) {
     const files = fs.readdirSync(dir);
     console.log(files);
@@ -42,14 +42,11 @@ function readFileList(dir, filesList = [], pid = 0) {
         const filePath = path.join(dir, item);
         const stat = fs.statSync(filePath);
         if (stat.isDirectory()) {
-            pid = id;
-            readFileList(path.join(dir, item), filesList);
+            // pid = id;
+            readFileList(path.join(dir, item), filesList, pid);
         } else {
             if (item === 'index.vue') {
-                console.log(1111);
-                
-                pid = pid;
-                return;
+                pid = id;
             }
             let content = fs.readFileSync(path.resolve(filePath), 'utf8');
             const matchStr = content.match(/@route\([\s\S]*?\)/g);
@@ -60,8 +57,8 @@ function readFileList(dir, filesList = [], pid = 0) {
             route.pid = pid;
             route.component = `() => import(/* webpackChunkName: "${item.split('.')[0]}" */ '@/${filePath.substr(filePath.indexOf("views"),filePath.length)}')`
             filesList.push(route);
+            id++;
         }
-        id++;
     });
     return filesList;
 }
