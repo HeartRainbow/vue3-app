@@ -39,3 +39,10 @@ function change(val, i) {
 
 change(100, 3);
 console.log(arr);
+
+// "babel-jest": "^28.1.0",
+// "compression-webpack-plugin": "^5.0.1",
+// "jest": "^28.1.0",
+// "jest-environment-jsdom": "^28.1.0",
+// "@types/jest": "^27.5.1",
+// "vue-jest": "^5.0.0-alpha.10",

@@ -52,7 +52,6 @@ function readFileList(dir, filesList = [], pid = 0) {
             const matchStr = content.match(/@route\([\s\S]*?\)/g);
             if(!matchStr) return;
             const route = JSON.parse(matchStr[0].match(/\{[^]*\}/g)[0]);
-            // console.log(JSON.parse(matchStr[0].match(/\{[^]*\}/g)[0]));
             route.id = id;
             route.pid = pid;
             route.component = `() => import(/* webpackChunkName: "${item.split('.')[0]}" */ '@/${filePath.substr(filePath.indexOf("views"),filePath.length)}')`
