@@ -1,19 +1,22 @@
-export default {
-    namespaced: true,
-    state: {
-        userName: '',
-        userID: '',
-        number: 1,
-    },
-    mutations: {
-        SET_NUMBER: (state, number) => {
-            state.number = number;
-        }
-    },
-    actions: {
-        setNumber: ({commit, state}, number) => {
-            console.log(state);
-            return commit('SET_NUMBER', number);
-        }
+import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators'
+
+@Module
+export default class User extends VuexModule {
+    userName: ''
+    userID: ''
+    number: number
+
+    @Mutation
+    SET_NUMBER(n: number) {
+        this.number = n;
+    }
+
+    @Action
+    async setNumber(payload: number) {
+        this.context.commit('SET_NUMBER', payload)
+    }
+
+    get axles() {
+        return this.number / 2
     }
 }

@@ -1,8 +1,8 @@
 /**
  * 深拷贝
  * 
- * @param data 
- * @param map 
+ * @param data 原数据
+ * @param map Map缓存键值
  * @returns 
  */
 export function deepClone(data: any, map: Map<any, any> = new Map) {

@@ -1,6 +1,6 @@
 import { Module, Mutation, VuexModule } from 'vuex-module-decorators'
 
-@Module({ namespaced: true, name: 'mm' })
+@Module
 export default class MyModule extends VuexModule {
   wheels = 2
 

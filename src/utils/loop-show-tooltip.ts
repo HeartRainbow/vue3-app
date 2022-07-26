@@ -1,6 +1,6 @@
 /**
  *  echarts tooltip 自动轮播
- *  @author liuwei
+ * 
  *  @param myChart  //初始化echarts的实例
  *  @param option   //指定图表的配置项和数据
  *  @param num      //类目数量(原因：循环时达到最大值后，使其从头开始循环)

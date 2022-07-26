@@ -27,6 +27,8 @@ export default defineComponent({
       count,
       inc() {
         count.value++;
+
+        console.log(this.$store.state.myModule.wheels);
       },
       dec() {
         count.value--;

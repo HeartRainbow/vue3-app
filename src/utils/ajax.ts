@@ -49,7 +49,7 @@ export class Ajax {
      * @param resolve 
      * @param reject 
      */
-    public onChange(resolve, reject) {
+    private onChange(resolve, reject) {
         this.m_Ajax.onreadystatechange = function () {
             if (this.m_Ajax.readyState === 4) {
                 if (this.m_Ajax.status === 200) {
