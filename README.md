@@ -111,3 +111,9 @@ https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
 ## 工具
 > 前端滑块验证<br>
 > https://www.cnblogs.com/queenDream/p/12760077.html
+
+
+# 软件破解
+
+## Navicat
+> https://www.cnblogs.com/no-celery/p/14824579.html
