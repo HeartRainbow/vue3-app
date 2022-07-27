@@ -1,17 +1,17 @@
 # vue3-app
 
 ## Project setup
-```
+```bash
 npm install
 ```
 
 ### Compiles and hot-reloads for development
-```
+```bash
 npm run serve
 ```
 
 ### Compiles and minifies for production
-```
+```bash
 npm run build:prod
 ```
 
@@ -39,7 +39,7 @@ https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
 1. 每次提交或新建分支先拉取合并master代码到当前分支；
 2. commit提交信息以（type(scope): desc）例：
    
-    ```
+    ```bash
     git commit -m "feat: 图片上传OSS"
 
     type 用于说明提交的类别
