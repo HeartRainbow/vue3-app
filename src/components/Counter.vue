@@ -6,7 +6,11 @@
     <button @click="reset">重置</button>
     <div>
       <button @click="userLogin">login</button>
-    <input id="file" type="file" name="file" multiple @change="uploadFile($event)" >
+      <input id="file" type="file" name="file" multiple @change="uploadFile($event)" >
+    </div>
+    <div>
+     <!-- v-copy中就是要复制的内容 -->
+      <p v-copy="'复制的内容'">复制内容</p>
     </div>
   </div>
 </template>

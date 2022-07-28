@@ -15,8 +15,4 @@ export default class User extends VuexModule {
     async setNumber(payload: number) {
         this.context.commit('SET_NUMBER', payload)
     }
-
-    get axles() {
-        return this.number / 2
-    }
 }

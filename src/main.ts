@@ -10,6 +10,7 @@ import store from './store';
 import ElementPlus from 'element-plus';
 import globalComponents from '@/components';
 import api from './api';
+import directives from './utils/directives';
 
 console.log(api);
 
@@ -24,7 +25,7 @@ import './assets/styles/loading.css';
   const mode = process.env.NODE_ENV.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
   console.log(await JsYamlConfigLoader.load(config[mode]));
 
-  createApp(App).use(store).use(router).use(ElementPlus).use(globalComponents).mount('#app');
+  createApp(App).use(store).use(router).use(ElementPlus).use(globalComponents).use(directives).mount('#app');
 
   class Test {
 

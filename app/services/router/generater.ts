@@ -36,13 +36,20 @@ import path from 'path';
 // console.log(filesList);
 let id = 1;
 function readFileList(dir, filesList = [], pid = 0) {
-    const files = fs.readdirSync(dir);
-    console.log(files);
+    const files = fs.readdirSync(dir).reduce((memo, cr) => {
+        if (cr === 'index.vue') {
+            memo.push(memo[0]);
+            memo[0] = cr;
+        } else {
+            memo.push(cr);
+        }
+        return memo;
+    }, []);
     files.forEach((item, _) => {
         const filePath = path.join(dir, item);
         const stat = fs.statSync(filePath);
         if (stat.isDirectory()) {
-            // pid = id;
+            pid = id;
             readFileList(path.join(dir, item), filesList, pid);
         } else {
             if (item === 'index.vue') {
