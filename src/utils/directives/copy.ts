@@ -7,8 +7,6 @@ export default {
      value: 传给指令的值，也就是我们要 copy 的值
     */
      mounted(el, { value }) {
-        console.log(el, value);
-        
         el.$value = value; // 用一个全局属性来存传进来的值，因为这个值在别的钩子函数里还会用到
         el.handler = () => {
             if (!el.$value) {
