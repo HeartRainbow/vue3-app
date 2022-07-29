@@ -1,7 +1,7 @@
 /**
  * 表单检验并定位到第一个验证错误
  * 
- * @param formName 
+ * @param formName ref绑定的表单名称
  */
 export function formValidate(formName: string) {
     let validated = false;

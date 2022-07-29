@@ -1,4 +1,4 @@
-import { getCookie } from '@/utils';
+import { Cookie } from '@/utils';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 
@@ -45,7 +45,7 @@ const router = createRouter({
 // router.beforeEach((to, from, next) => {
 //   console.log(to, from, next);
 
-  const token = getCookie('token');
+  const token = Cookie.get('token');
   console.log(token);
 
 //   if(!token)
