@@ -10,13 +10,11 @@
 import { Options, Vue } from 'vue-class-component';
 import HelloWorld from '@/components/HelloWorld.vue';
 import Card from '@/components/Card.vue';
-// import BaseEcharts from '@/components/base-echarts/index.vue';
 import { reactive } from 'vue';
 
 @Options({
   components: {
     HelloWorld,
-    // BaseEcharts,
     Card
   }
 })

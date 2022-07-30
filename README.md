@@ -117,3 +117,9 @@ https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
 
 ## Navicat
 > https://www.cnblogs.com/no-celery/p/14824579.html
+
+**C/C++ 从零实现一个windows窗口（非常详细）**
+> https://blog.csdn.net/weixin_50964512/article/details/124140735?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-3-124140735-blog-79450832.pc_relevant_multi_platform_whitelistv1_exp2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-3-124140735-blog-79450832.pc_relevant_multi_platform_whitelistv1_exp2&utm_relevant_index=6
+
+**Nginx根据域名分发不同端口**
+> https://blog.csdn.net/m0_37190495/article/details/91442671?spm=1001.2101.3001.6650.14&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-14-91442671-blog-113682483.pc_relevant_multi_platform_whitelistv3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-14-91442671-blog-113682483.pc_relevant_multi_platform_whitelistv3&utm_relevant_index=20

@@ -1,50 +1,25 @@
 <template>
-  <div>
-    <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
-    <el-checkbox-group v-model="checkedOptions" @change="handleCheckedOptionsChange">
-      <el-checkbox v-for="item in data" :label="item" :key="item">{{ item }}</el-checkbox>
-    </el-checkbox-group>
-  </div>
+  <el-checkbox v-model="checkAll" :indeterminate="isIndeterminate" @change="handleCheckAllChange" >Check all</el-checkbox >
+  <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange" >
+    <el-checkbox v-for="city in cities" :key="city" :label="city">{{ city }}</el-checkbox>
+  </el-checkbox-group>
 </template>
 
-<script>
-const options = ['上海', '北京', '广州', '深圳']
+<script lang="ts" setup>
+import { ref } from 'vue';
 
-export default {
-  name: 'CheckBoxAll',
-  // model: {
-  //   prop: 'data',
-  //   // 随便命名事件，对应下面$emit即可
-  //   event: 'input'
-  // },
-  props: {
-    data: {
-      type: Array,
-      default: () => []
-    }
-  },
-  data() {
-    return {
-      checkAll: false,
-      checkedOptions: [],
-      options: this.data,
-      isIndeterminate: true
-    }
-  },
-  methods: {
-    handleCheckAllChange(val) {
-      this.checkedOptions = val ?? []
-      this.isIndeterminate = false
-      this.$emit('change', this.checkedOptions)
-      this.$emit('input', this.checkedOptions)
-    },
-    handleCheckedOptionsChange(value) {
-      const checkedCount = value.length
-      this.checkAll = checkedCount === this.options.length
-      this.isIndeterminate = checkedCount > 0 && checkedCount < this.options.length
-      this.$emit('change', this.checkedOptions)
-      this.$emit('input', this.checkedOptions)
-    }
-  }
+const checkAll = ref(false);
+const isIndeterminate = ref(true);
+const checkedCities = ref(['Shanghai', 'Beijing']);
+const cities = ['Shanghai', 'Beijing', 'Guangzhou', 'Shenzhen'];
+
+const handleCheckAllChange = (val: boolean) => {
+  checkedCities.value = val ? cities : [];
+  isIndeterminate.value = false;
+}
+const handleCheckedCitiesChange = (value: string[]) => {
+  const checkedCount = value.length;
+  checkAll.value = checkedCount === cities.length;
+  isIndeterminate.value = checkedCount > 0 && checkedCount < cities.length;
 }
 </script>

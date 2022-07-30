@@ -12,10 +12,10 @@
      <!-- v-copy中就是要复制的内容 -->
       <p v-copy="'复制的内容'">复制内容</p>
     </div>
-    <div>
+    <!-- <div>
       <div v-backtop="50"> 顶部1 </div>
       <div v-backtop:wu="50"> 顶部2 </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
