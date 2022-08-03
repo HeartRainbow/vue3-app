@@ -5,7 +5,7 @@
     <button @click="dec">减</button>
     <button @click="reset">重置</button>
     <div>
-      <button @click="userLogin">login</button>
+      <button @click="userLogin" v-permission="'login'">login</button>
       <input id="file" type="file" name="file" multiple @change="uploadFile($event)" >
     </div>
     <div>
@@ -37,6 +37,7 @@ export default defineComponent({
         count.value++;
 
         console.log(this.$store.state.myModule.wheels);
+        console.log(this.$store.state.permission.btnPermission);
       },
       dec() {
         count.value--;

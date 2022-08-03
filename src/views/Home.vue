@@ -1,6 +1,5 @@
 <!-- @route({ "path": "/home", "alias": "首页", "name": "Home", "meta": { "requiresAuth": true } }) -->
 
-
 <template>
   <div class="home">
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" /> -->
@@ -30,8 +29,9 @@ import Card from '@/components/Card.vue';
   }
 })
 export default class Home extends Vue {
-  setup() {}
+  setup() { }
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>
