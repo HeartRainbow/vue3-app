@@ -1,22 +1,24 @@
 import Container, { Inject } from 'typedi';
+import { createApp } from 'vue';
+import ElementPlus from 'element-plus';
+
 import { ConfigLoaderBase } from '../app/contract';
 import { config } from '../app/model';
 import { initIoC } from '../app/services';
 
-import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import ElementPlus from 'element-plus';
 import globalComponents from '@/components';
 import api from './api';
 import directives from './utils/directives';
 
-console.log(api);
-
 import 'element-plus/dist/index.css';
 import './assets/styles/tailwind.css';
 import './assets/styles/loading.css';
+
+console.log(api);
+
 
 (async () => {
   await initIoC();
