@@ -1,16 +1,16 @@
-import { Module, Mutation, VuexModule } from 'vuex-module-decorators'
+import { Module, Mutation, VuexModule } from 'vuex-module-decorators';
 
 @Module
 export default class MyModule extends VuexModule {
-  wheels = 2
+  wheels = 2;
 
   @Mutation
   incrWheels(extra: number) {
-    this.wheels += extra
+    this.wheels += extra;
   }
 
   get axles() {
-    return this.wheels / 2
+    return this.wheels / 2;
   }
 }
 

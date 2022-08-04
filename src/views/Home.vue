@@ -11,6 +11,8 @@
       />
     </div> -->
     <CheckBox></CheckBox>
+    <el-button type="primary" @click="export">导出数据</el-button>
+    <button @click="export">Click</button>
   </div>
 </template>
 
@@ -19,7 +21,24 @@ import { Options, Vue } from 'vue-class-component';
 import HelloWorld from '@/components/HelloWorld.vue';
 import CheckBox from '@/components/CheckBox.vue';
 import Card from '@/components/Card.vue';
+import { jsonToExcel } from '@/utils';
 
+const data = [
+  {
+    data: [
+      { name: '大作战', date: '2022-10-10' },
+      { name: '大作战1', date: '2022-10-11' },
+      { name: '大作战2', date: '2022-10-12' },
+      { name: '大作战3', date: '2022-10-13' },
+    ],
+    fields: ['name', 'date'],
+    alias: {
+      // 修改表头别名
+      name: '游戏名称',
+      date: '日期'
+    }
+  }
+]
 
 @Options({
   components: {
@@ -29,6 +48,11 @@ import Card from '@/components/Card.vue';
   }
 })
 export default class Home extends Vue {
+  
+  export() {
+    console.log(132);
+    jsonToExcel(data, 'execl表格')
+  }
   setup() { }
 }
 </script>

@@ -24,7 +24,20 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 1. 以首字母按26字母顺序排列；
 2. 路径越近的在前排列；
 3. 第三方包在前，项目自身文件在后；
-4. 包，文件之间间隔一行
+4. 包，文件之间间隔一行；
+5. 语句结尾必须加分号；
+   
+示例：
+   ```typescript
+    import { createStore } from 'vuex';
+    import modules from './modules';
+    import getters from './getters';
+
+    export default createStore({
+        modules,
+        getters
+    })
+   ```
 
 ## git规范
 >每次开发新功能，都应该新建一个单独的分支。<br>

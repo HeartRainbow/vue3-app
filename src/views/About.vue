@@ -55,8 +55,8 @@ export default class About extends Vue {
 <!-- https://class-component.vuejs.org/guide/class-component.html#methods -->
 
 <style lang="scss" scoped>
-  .about {
-      width: 100%;
-      height: calc(100% - 80px);
-  }
+.about {
+  width: 100%;
+  height: calc(100% - 80px);
+}
 </style>

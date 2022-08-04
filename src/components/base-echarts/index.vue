@@ -13,7 +13,7 @@ import * as echarts from "echarts";
 // echarts.registerMap('china', china);
 
 //如果需要tooltip自动轮播
-import { loopShowTooltip, debounce } from '../../utils';
+import { loopTooltip, debounce } from '../../utils';
 
 let chartsArr = [];
 
@@ -47,7 +47,7 @@ export default defineComponent({
                     myChart.setOption(props.options);
                     tootipTimer && tootipTimer.clearLoop();
                     tootipTimer = null;
-                    tootipTimer = loopShowTooltip(myChart, props.options, 7, 2000);
+                    tootipTimer = loopTooltip(myChart, props.options, 7, 2000);
                 })
                 chartsArr.push(myChart);
             });

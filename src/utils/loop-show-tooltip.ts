@@ -6,7 +6,7 @@
  *  @param num      //类目数量(原因：循环时达到最大值后，使其从头开始循环)
  *  @param interval //轮播间隔时长
  */
-export function loopShowTooltip(myChart, _, num = 0, interval = 2000) {
+export function loopTooltip(myChart, _, num = 0, interval = 2000) {
   let count = 0;
   let timeTicket = null;
   timeTicket && clearInterval(timeTicket);
@@ -73,9 +73,5 @@ export function loopShowTooltip(myChart, _, num = 0, interval = 2000) {
       }
     }, 3000);
   });
-}
-
-export default {
-  loopShowTooltip
 }
 

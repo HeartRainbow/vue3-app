@@ -1,12 +1,4 @@
 export default {
-
-    clickCallback(ele, target) {
-        if (ele)
-            smooth(target);
-        else
-            target.scrollTo({ top: 0, behavior: 'smooth' });
-    },
-
     mounted(el, binding) {
         const ele = document.getElementById(binding.arg);
         const target = ele || window;
@@ -14,7 +6,7 @@ export default {
         // 点击监听
         el.addEventListener('click', () => {
             if (ele)
-            smooth(target);
+                smooth(target);
             else
                 target.scrollTo({ top: 0, behavior: 'smooth' });
         });

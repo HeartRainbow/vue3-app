@@ -4,7 +4,6 @@ import { OsLoading } from '../../app/hooks/loading';
 import yamlConfig from 'js-yaml-loader!../../config.yaml';
 
 
-
 const mode = process.env.NODE_ENV.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
 const options = yamlConfig[mode];
 

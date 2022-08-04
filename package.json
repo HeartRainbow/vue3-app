@@ -11,7 +11,9 @@
 		"build:dev": "ts-node ./app/services/version/index.ts && vue-cli-service build --mode development",
 		"build:prod": "vue-cli-service build --mode production",
 		"version": "ts-node ./app/services/version/index.ts",
-		"router": "ts-node ./app/services/router/generater.ts"
+		"router": "ts-node ./app/services/router/generater.ts",
+		"exportExecl": "ts-node ./src/utils/file-loader/json-to-execl.ts"
+
 	},
 	"dependencies": {
 		"axios": "^0.27.2",
@@ -26,7 +28,8 @@
 		"vue": "^3.2.0",
 		"vue-class-component": "^8.0.0-rc.1",
 		"vue-router": "^4.0.0",
-		"vuex": "^4.0.0"
+		"vuex": "^4.0.0",
+		"xlsx": "^0.18.5"
 	},
 	"devDependencies": {
 		"@tailwindcss/postcss7-compat": "^2.2.17",

@@ -10,7 +10,7 @@ interface IPermission {
 @Module
 export default class Permission extends VuexModule {
   btnPermission: IPermission = {
-    login: true
+    login: false
   };
 
   @Mutation
