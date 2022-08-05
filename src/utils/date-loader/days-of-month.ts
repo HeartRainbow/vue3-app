@@ -5,7 +5,7 @@
  * @param month 月份
  * @returns 
  */
-function getDaysInMonth(year: string, month: string) {
+function daysOfMonth(year: string, month: string) {
     const daysOfMonth = [];
     const mon = parseInt(month, 10);
     const lastDayOfMonth = new Date(Number(year), mon, 0).getDate();
