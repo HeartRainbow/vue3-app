@@ -62,6 +62,7 @@ module.exports = {
         // 定义文件夹的路径
         config.resolve.alias
             .set("@", resolve("src"))
+            .set("@app", resolve("app"))
             .set("assets", resolve("src/assets"))
             .set("components", resolve("src/components"))
             .set("router", resolve("src/router"))

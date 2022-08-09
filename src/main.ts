@@ -3,8 +3,9 @@ import { createApp } from 'vue';
 import ElementPlus from 'element-plus';
 
 import { ConfigLoaderBase } from '../app/contract';
-import { config } from '../app/model';
-import { initIoC } from '../app/services';
+import { config } from '@app/model';
+import { initIoC } from '@app/services';
+import liteTypeDI from '@app/lite-typedi';
 
 import App from './App.vue';
 import router from './router';
@@ -23,11 +24,11 @@ console.log(api);
 (async () => {
   await initIoC();
 
-  const JsYamlConfigLoader = Container.get<ConfigLoaderBase>(ConfigLoaderBase as any);
-  const mode = process.env.NODE_ENV.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
-  console.log(await JsYamlConfigLoader.load(config[mode]));
+  // const JsYamlConfigLoader = Container.get<ConfigLoaderBase>(ConfigLoaderBase as any);
+  // const mode = process.env.NODE_ENV.replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+  // console.log(await JsYamlConfigLoader.load(config[mode]));
 
-  createApp(App).use(store).use(router).use(ElementPlus).use(globalComponents).use(directives).mount('#app');
+  createApp(App).use(store).use(router).use(globalComponents).use(liteTypeDI).use(directives).use(ElementPlus).mount('#app');
 
   class Test {
 
@@ -41,5 +42,5 @@ console.log(api);
   }
 
   const t1 = Container.get(Test);
-  console.log(await t1.call());
+  console.log('>>>>>>>>>>>>>>>>>>>>>=', await t1.call());
 })();

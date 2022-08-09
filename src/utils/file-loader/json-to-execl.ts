@@ -9,7 +9,7 @@ interface ISource {
 }
 
 export function jsonToExcel(source: ISource[], title = 'execl表格') {
-    console.log(title);
+console.log(title);
     
     // 新建book
     const wb = XLSX.utils.book_new()

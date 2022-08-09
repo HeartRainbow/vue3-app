@@ -13,7 +13,6 @@
 		"version": "ts-node ./app/services/version/index.ts",
 		"router": "ts-node ./app/services/router/generater.ts",
 		"exportExecl": "ts-node ./src/utils/file-loader/json-to-execl.ts"
-
 	},
 	"dependencies": {
 		"axios": "^0.27.2",
@@ -27,6 +26,7 @@
 		"typedi": "^0.8.0",
 		"vue": "^3.2.0",
 		"vue-class-component": "^8.0.0-rc.1",
+		"vue-property-decorator": "^10.0.0-rc.3",
 		"vue-router": "^4.0.0",
 		"vuex": "^4.0.0",
 		"xlsx": "^0.18.5"

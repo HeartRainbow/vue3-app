@@ -1,3 +1,8 @@
+import { Service } from "typedi";
+import 'reflect-metadata';
+
+
+@Service()
 export class DateLoader extends Date {
     constructor() {
         super()

@@ -11,8 +11,8 @@
       />
     </div> -->
     <CheckBox></CheckBox>
-    <el-button type="primary" @click="export">导出数据</el-button>
-    <button @click="export">Click</button>
+    <el-button type="primary" @click="exportHandler">导出数据</el-button>
+    <button @click="exportHandler">Click</button>
   </div>
 </template>
 
@@ -21,24 +21,26 @@ import { Options, Vue } from 'vue-class-component';
 import HelloWorld from '@/components/HelloWorld.vue';
 import CheckBox from '@/components/CheckBox.vue';
 import Card from '@/components/Card.vue';
-import { jsonToExcel } from '@/utils';
+// import { jsonToExcel } from '@/utils';
+import { DateLoader } from '@app/services';
+import { Inject } from 'typedi';
 
-const data = [
-  {
-    data: [
-      { name: '大作战', date: '2022-10-10' },
-      { name: '大作战1', date: '2022-10-11' },
-      { name: '大作战2', date: '2022-10-12' },
-      { name: '大作战3', date: '2022-10-13' },
-    ],
-    fields: ['name', 'date'],
-    alias: {
-      // 修改表头别名
-      name: '游戏名称',
-      date: '日期'
-    }
-  }
-]
+// const data = [
+//   {
+//     data: [
+//       { name: '大作战', date: '2022-10-10' },
+//       { name: '大作战1', date: '2022-10-11' },
+//       { name: '大作战2', date: '2022-10-12' },
+//       { name: '大作战3', date: '2022-10-13' },
+//     ],
+//     fields: ['name', 'date'],
+//     alias: {
+//       // 修改表头别名
+//       name: '游戏名称',
+//       date: '日期'
+//     }
+//   }
+// ]
 
 @Options({
   components: {
@@ -48,14 +50,18 @@ const data = [
   }
 })
 export default class Home extends Vue {
-  
-  export() {
+
+  @Inject()
+  public dateLoader: DateLoader
+
+  exportHandler() {
+    console.log(this);
+    console.log(this.dateLoader);
     console.log(132);
-    jsonToExcel(data, 'execl表格')
+    // jsonToExcel(data, 'execl表格');
   }
-  setup() { }
 }
+
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped> </style>

@@ -1,4 +1,5 @@
 export * from './common';
+export * from './date-loader';
 export * from './file-loader';
 export * from './http';
 export * from './load-file';
