@@ -5,7 +5,7 @@ import ElementPlus from 'element-plus';
 import { ConfigLoaderBase } from '../app/contract';
 import { config } from '@app/model';
 import { initIoC } from '@app/services';
-import liteTypeDI from '@app/lite-typedi';
+import liteTypeDI from '@app/lite-vue-typedi';
 
 import App from './App.vue';
 import router from './router';
