@@ -9,10 +9,12 @@ export function setInjection(options: any, propertyName: string, value: () => an
     }
     opt.__injections__.set(propertyName, value);
 }
+
 export function getInjections(options: any) {
     const opt = options as OptionInjections;
     return opt.__injections__;
 }
+
 export function getInjection<T>(options: any, propertyName: string): (() => T) | undefined {
     const opt = options as OptionInjections;
     if (!opt.__injections__) {

@@ -11,6 +11,8 @@ export function Inject(token: Token<any>): Function;
 
 export function Inject(typeOrName?: InjectType) {
     return (target: any, propertyName: string, index?: number) => {
+        console.log('target>>>>>>>=', target, propertyName, index);
+        
         if (target instanceof Vue) {
             // Use special injection method
             let identifier: any;
@@ -21,6 +23,7 @@ export function Inject(typeOrName?: InjectType) {
             } else {
                 identifier = (Reflect as any).getMetadata('design:type', target, propertyName);
             }
+            console.log('identifier>>>', identifier);
 
             const value = () => Container.get<any>(identifier);
             const decorator = createDecorator(options => {
