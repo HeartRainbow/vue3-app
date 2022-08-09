@@ -3,7 +3,7 @@ import moment from 'moment';
 /**
  * 当前时间接口
  */
-export abstract class NowTimeBase {
+export abstract class DateLoaderBase extends Date {
     /**
      * 是否同一天
      * 

@@ -1,25 +1,24 @@
-import { Service } from "typedi";
-import 'reflect-metadata';
+import { DateLoaderBase } from "@app/contract/date-loader-base";
 
-
-@Service()
-export class DateLoader extends Date {
+export class DateLoader extends DateLoaderBase {
     constructor() {
         super()
     }
 
     /**
-     * 当前时间戳 （秒）
+     * @returns 时间戳(单位: s)
      */
-    get nowTime() {
-        return Math.floor(this.getTime() / 1000)
+     public unix() {
+        return Math.floor(
+            Date.now() / 1000
+        );
     }
 
     /**
-     * 当前时间戳 （毫秒）
+     * @returns 时间戳(单位: 毫秒)
      */
-    get nowTimeStamp() {
-        return this.getTime()
+    public unixMilli() {
+        return Date.now();
     }
 
 

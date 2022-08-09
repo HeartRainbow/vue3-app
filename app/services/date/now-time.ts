@@ -7,7 +7,7 @@ export class DateNowTime extends NowTimeBase {
     /**
      * @returns 时间戳(单位: s)
      */
-    public async unix() {
+    public unix() {
         return Math.floor(
             Date.now() / 1000
         );
@@ -16,7 +16,7 @@ export class DateNowTime extends NowTimeBase {
     /**
      * @returns 时间戳(单位: 纳秒)
      */
-    public async unixMilli() {
+    public unixMilli() {
         return Date.now() * 1000;
     }
 }
