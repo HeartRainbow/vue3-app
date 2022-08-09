@@ -23,7 +23,8 @@ import CheckBox from '@/components/CheckBox.vue';
 import Card from '@/components/Card.vue';
 // import { jsonToExcel } from '@/utils';
 import { DateLoader } from '@app/services';
-import { Inject } from 'typedi';
+import { Inject } from '@app/lite-typedi';
+import { ConfigLoaderBase } from '@app/contract';
 
 // const data = [
 //   {
@@ -53,11 +54,12 @@ export default class Home extends Vue {
 
   @Inject()
   public dateLoader: DateLoader
+  @Inject()
+  public jsYamlConfigLoader: ConfigLoaderBase
 
   exportHandler() {
-    console.log(this);
-    console.log(this.dateLoader);
-    console.log(132);
+    console.log(this.dateLoader.nowTime);
+    console.log(this.jsYamlConfigLoader);
     // jsonToExcel(data, 'execl表格');
   }
 }

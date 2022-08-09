@@ -24,7 +24,7 @@ export class DateLoader extends Date {
 
 
     public format(time: any, pattern: string) {
-        if (arguments.length === 0) {
+        if (!arguments.length) {
             return ''
         }
         if (time === null) {
@@ -71,7 +71,3 @@ export class DateLoader extends Date {
         return time_str
     }
 }
-
-
-console.log(new DateLoader().nowTime);
-// console.log(new DateLoader().format(Date.now(), '{y}-{m}-{d}'));
