@@ -1,5 +1,4 @@
 import { Container, Inject as TypediInject, Token } from 'typedi';
-// import Vue from 'vue';
 import { createDecorator, Vue } from 'vue-class-component';
 
 import { setInjection } from './utils';
