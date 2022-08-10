@@ -11,7 +11,6 @@
 		"build:dev": "ts-node ./app/services/version/index.ts && vue-cli-service build --mode development",
 		"build:prod": "vue-cli-service build --mode production",
 		"version": "ts-node ./app/services/version/index.ts",
-		"router": "ts-node ./app/services/router/generater.ts",
 		"exportExecl": "ts-node ./src/utils/file-loader/json-to-execl.ts"
 	},
 	"dependencies": {

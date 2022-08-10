@@ -9,8 +9,6 @@ interface ISource {
 }
 
 export function jsonToExcel(source: ISource[], title = 'execl表格') {
-console.log(title);
-    
     // 新建book
     const wb = XLSX.utils.book_new()
 
@@ -74,5 +72,5 @@ console.log(title);
     })
 
     // 写文件(book,xlsx文件名称)
-    // XLSX.writeFile(wb, `${title}.xlsx`)
+    XLSX.writeFile(wb, `${title}.xlsx`)
 }
