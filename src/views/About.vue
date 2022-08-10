@@ -1,5 +1,3 @@
-<!-- @route({ "path": "/about", "alias": "关于", "name": "About", "meta": { "requiresAuth": true } }) -->
-
 <template>
   <div class="about">
     <BaseEcharts :options="options" />

@@ -1,5 +1,5 @@
 
-import XLSX from "xlsx";
+import { utils, writeFile } from "xlsx";
 
 interface ISource {
     sheetName?: string;
@@ -9,8 +9,10 @@ interface ISource {
 }
 
 export function jsonToExcel(source: ISource[], title = 'execl表格') {
+    console.log(utils);
+    
     // 新建book
-    const wb = XLSX.utils.book_new()
+    const wb = utils.book_new()
 
     source.forEach(r => {
         let { sheetName = 'sheet1', data = [], fields = [], alias = {} } = r
@@ -28,15 +30,15 @@ export function jsonToExcel(source: ISource[], title = 'execl表格') {
         }
 
         // 新建空workbook，然后加入worksheet
-        const ws = XLSX.utils.json_to_sheet(data, {
+        const ws = utils.json_to_sheet(data, {
             header: fields
         })
 
         // 修改导出表头的名称
         if (alias && JSON.stringify(alias) !== '{}') {
-            const range = XLSX.utils.decode_range(ws['!ref'])
+            const range = utils.decode_range(ws['!ref'])
             for (let { c } = range.s; c <= range.e.c; c++) {
-                const header = `${XLSX.utils.encode_col(c)}1`
+                const header = `${utils.encode_col(c)}1`
                 ws[header].v = alias[ws[header].v] || ws[header].v
             }
         }
@@ -68,9 +70,9 @@ export function jsonToExcel(source: ISource[], title = 'execl表格') {
         ws['!cols'] = result
 
         // 生成xlsx文件(book,sheet数据,sheet命名)
-        XLSX.utils.book_append_sheet(wb, ws, sheetName)
+        utils.book_append_sheet(wb, ws, sheetName)
     })
 
     // 写文件(book,xlsx文件名称)
-    XLSX.writeFile(wb, `${title}.xlsx`)
+    writeFile(wb, `${title}.xlsx`)
 }

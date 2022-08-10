@@ -1,5 +1,3 @@
-<!-- @route({ "path": "/login", "alias": "登录", "name": "Login", "meta": { "requiresAuth": true } }) -->
-
 <template>
     <div class="wrap">
       <div class="wrap-inner">
