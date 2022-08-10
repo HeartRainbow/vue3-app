@@ -10,7 +10,6 @@
         alt=""
       />
     </div> -->
-    <CheckBox></CheckBox>
     <el-button type="primary" @click="exportHandler">导出数据</el-button>
     <button @click="exportHandler">Click</button>
   </div>
@@ -19,7 +18,6 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import HelloWorld from '@/components/HelloWorld.vue';
-import CheckBox from '@/components/CheckBox.vue';
 import Card from '@/components/Card.vue';
 // import { jsonToExcel } from '@/utils';
 import { Inject, ConfigLoaderBase, DateLoader } from '@app/.';
@@ -44,7 +42,6 @@ import { Inject, ConfigLoaderBase, DateLoader } from '@app/.';
 @Options({
   components: {
     HelloWorld,
-    CheckBox,
     Card
   }
 })
