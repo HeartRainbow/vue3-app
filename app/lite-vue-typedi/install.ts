@@ -4,9 +4,8 @@ export function install(vue: any) {
     vue.mixin({
         beforeCreate() {
             const injections = getInjections(this.$options);
-            
             if (injections) {
-                console.log('injections>>>>>>>=', injections);
+                // 组件创建之前注入方法
                 injections.forEach((r, propertyName) => {
                     this[propertyName] = r();
                 });

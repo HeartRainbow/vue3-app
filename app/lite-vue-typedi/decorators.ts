@@ -5,16 +5,27 @@ import { setInjection } from './utils';
 
 type InjectType = ((type?: any) => Function) | string | Token<any>;
 
+/**
+ * Inject方法的重载声明
+ * 重载分为两个部分（缺一不可）：
+ *    1.声明
+ *    2.实现
+ */
 export function Inject(type?: (type?: any) => Function): Function;
 export function Inject(serviceName?: string): Function;
 export function Inject(token: Token<any>): Function;
 
+/**
+ * 自定义注入方法以适用VUE
+ * 
+ * @param typeOrName 
+ * @returns 
+ */
 export function Inject(typeOrName?: InjectType) {
     return (target: any, propertyName: string, index?: number) => {
-        console.log('target>>>>>>>=', target, propertyName, index);
-        
+
         if (target instanceof Vue) {
-            // Use special injection method
+            // use custom injection method
             let identifier: any;
             if (typeof typeOrName === 'string') {
                 identifier = typeOrName;
@@ -23,7 +34,6 @@ export function Inject(typeOrName?: InjectType) {
             } else {
                 identifier = (Reflect as any).getMetadata('design:type', target, propertyName);
             }
-            console.log('identifier>>>', identifier);
 
             const value = () => Container.get<any>(identifier);
             const decorator = createDecorator(options => {
@@ -31,7 +41,7 @@ export function Inject(typeOrName?: InjectType) {
             });
             decorator(target, propertyName, index!);
         } else {
-            // Use typedi inject
+            // use typedi inject
             const decorator = TypediInject(typeOrName as any);
             decorator(target, propertyName, index);
         }
