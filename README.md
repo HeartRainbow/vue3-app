@@ -1,21 +1,21 @@
 # vue3-app
 
-## Project setup
+### 安装依赖
 ```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 运行（开发环境）
 ```bash
-npm run serve
+npm run dev
 ```
 
-### Compiles and minifies for production
+### 打包（生产环境）
 ```bash
 npm run build:prod
 ```
 
-### Customize configuration
+### 配置文档
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 代码规范
@@ -76,20 +76,20 @@ https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
 | Command                     | Description                                     |
 | :---                        |    ----                                         |
 | git add .                   | 将所有修改加入暂存区（包括修改、删除、新增文件）         |
-| git add <file>              | 将指定文件加入暂存区（包括修改、删除、新增文件）         |
+| git add \<file\>              | 将指定文件加入暂存区（包括修改、删除、新增文件）         |
 | git commit -m "desc"        | 提交本次修改到本地仓库                              |
 | git commit --amend          | 更改上次提交信息，与上一次提交是同一个提交              |
 | git push                    | 将本地仓库的修改推送到远程仓库                        |
-| git push origin <branch>    | 推送到指定的远程分支                                |
+| git push origin \<branch\>    | 推送到指定的远程分支                                |
 | git pull                    | 拉取指定分支代码到本地                               |
-| git pull origin <branch>    | 合并指定分支到当前分支                               |
-| git merge <branch>          | 将当前分支与指定分支合并                             |
+| git pull origin \<branch\>    | 合并指定分支到当前分支                               |
+| git merge \<branch\>          | 将当前分支与指定分支合并                             |
 | git status                  | 查看文件状态                                       |
 | git branch                  | 列出所有本地分支                                    |
 | git branch -a               | 列出所有本地分支和远程分支                            |
 | git checkout                | 切换到指定分支                                      |
 | git checkout -b             | 创建并切换到指定分支                                 |
-| git clone <url>             | 克隆远程分支                                       |
+| git clone \<url\>             | 克隆远程分支                                       |
 | git stash                   | 暂存没有提交的工作                                  |
 | git stash list              | 列出所有暂时保存的工作                               |
 | git stash apply stash@{1}   | 恢复某个暂时保存的工作                               |
@@ -97,7 +97,8 @@ https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
 | git stash drop              | 丢弃最近一次stash的文件                             |
 | git stash clear             | 删除所有的stash                                    |
 | git remote -v               | 显示所有的远程主机                                  |
-| git remote add origin <url> | 添加远程仓库                                       |
+| git remote set-url origin \<url\> | 修改远程仓库地址                                       |
+| git remote add origin \<url\> | 添加远程仓库                                       |
 | git remote show name        | 列出某个主机的详细信息                               |
 
 
