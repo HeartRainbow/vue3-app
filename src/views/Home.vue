@@ -13,11 +13,14 @@
 </template>
 
 <script lang="ts">
+import { Inject } from 'lite-typedi';
 import { Options, Vue } from 'vue-class-component';
+
+import { ConfigLoaderBase, DateLoader } from '@app/.';
+import { jsonToExcel } from '@/utils';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 import Card from '@/components/Card.vue';
-import { jsonToExcel } from '@/utils';
-import { Inject, ConfigLoaderBase, DateLoader } from '@app/.';
 
 const data = [
   {

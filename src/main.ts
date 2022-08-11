@@ -1,8 +1,8 @@
 import { createApp } from 'vue';
 import ElementPlus from 'element-plus';
+import liteTypeDI, { Container, Inject } from 'lite-typedi';
 
 import { ConfigLoaderBase } from '@app/contract';
-import liteTypeDI, { Container, Inject } from '@app/lite-vue-typedi';
 import { config } from '@app/model';
 import { initIoC } from '@app/services';
 

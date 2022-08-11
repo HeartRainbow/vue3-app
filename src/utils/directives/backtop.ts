@@ -33,7 +33,7 @@ export default {
     }
 }
 
-// 平滑移动，里面的数值都可以使用参数形式传入。这里直接写成固定值了。
+// 平滑移动，里面的数值都可以使用参数形式传入
 function smooth(ele) {
     let distance = ele.scrollTop;
     const step = (distance / 300) * 10;
