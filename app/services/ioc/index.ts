@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import Container from "typedi";
+import { Container } from "lite-typedi";
 
 import { ConfigLoaderBase, DateLoaderBase } from "../..";
 import { JsYamlConfigLoader, DateLoader } from "..";
