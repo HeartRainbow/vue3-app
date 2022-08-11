@@ -1,6 +1,7 @@
 {
 	"name": "vue3-app",
 	"version": "0.1.4",
+	"description": "vue3+typedi前端基础框架",
 	"private": true,
 	"license": "MIT",
 	"scripts": {
