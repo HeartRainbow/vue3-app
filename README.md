@@ -2,11 +2,11 @@
 技术栈：</br>
 vue3+typescript+webpack+vue-class-components的前端基础框架</br></br>
 特点：</br>
-* 所有组件均使用class语法书写，深入面向对象的思维</br>
-* 融合IOC的理念，将基础服务与业务代码解耦，结合AOP切面编程，开发体验丝般顺滑</br>
-* 封装常用的工具函数；如：时间处理，execl自定义导出，表单校验回滚，...</br>
-* 封装常用的基础组件；如：echarts，...</br>
-* 环境配置一个yaml文件搞定，不再频繁修改各种env</br>
+- 所有组件均使用class语法书写，深入面向对象的思维</br>
+- 融合IOC的理念，将基础服务与业务代码解耦，结合AOP切面编程，开发体验丝般顺滑</br>
+- 封装常用的工具函数；如：时间处理，execl自定义导出，表单校验回滚，...</br>
+- 封装常用的基础组件；如：echarts，...</br>
+- 环境配置一个yaml文件搞定，不再频繁修改各种env</br>
 
 
 ### 安装依赖
@@ -30,11 +30,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## 代码规范
 
 ### 文件引入
-1. 以首字母按26字母顺序排列；
-2. 路径越近的在前排列；
-3. 第三方包在前，项目自身文件在后；
-4. 包，文件之间间隔一行；
-5. 语句结尾必须加分号；
+- 以首字母按26字母顺序排列；
+- 路径越近的在前排列；
+- 第三方包在前，项目自身文件在后；
+- 包，文件之间间隔一行；
+- 语句结尾必须加分号；
    
 示例：
    ```typescript
@@ -50,17 +50,17 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## git规范
 >每次开发新功能，都应该新建一个单独的分支。<br>
-1. [Git 使用规范流程](https://ruanyifeng.com/blog/2015/08/git-use-process.html)
-2. [Git 教程](https://www.bookstack.cn/read/git-tutorial/README.md)
+- [Git 使用规范流程](https://ruanyifeng.com/blog/2015/08/git-use-process.html)
+- [Git 教程](https://www.bookstack.cn/read/git-tutorial/README.md)
 
 
 ### 分支命名
-1. 以功能英文描述加短横杠，例:（image-upload-oss）；
-2. 以姓名拼音加横杠拼接，例:（lai-qi-bin）；
+- 以功能英文描述加短横杠，例:（image-upload-oss）；
+- 以姓名拼音加横杠拼接，例:（lai-qi-bin）；
 
 ### [Git Commit 规范](https://segmentfault.com/a/1190000041878613)
-1. 每次提交或新建分支先拉取合并master代码到当前分支
-2. commit提交信息以（type(scope): desc）例：
+- 每次提交或新建分支先拉取合并master代码到当前分支
+- commit提交信息以（type(scope): desc）例：
    
     ```bash
     git commit -m "feat: 图片上传OSS"
@@ -112,13 +112,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 ### 插件开发
-1. [Chrome插件开发攻略](https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html)
-2. [Chrome插件开发文档（中文版）](http://www.kkh86.com/it/chrome-extension-doc/extensions/api_index.html)
+- [Chrome插件开发攻略](https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html)
+- [Chrome插件开发文档（中文版）](http://www.kkh86.com/it/chrome-extension-doc/extensions/api_index.html)
 
 ### vue
- 1. [vue-cli3配置](https://gitee.com/leerayn/vue-cli3-config)
+ - [vue-cli3配置](https://gitee.com/leerayn/vue-cli3-config)
     
 
 ### TypeScript
-1. [深入理解TypeScript](https://jkchao.github.io/typescript-book-chinese/#why)
-2. [简易DI容器实现](https://www.cnblogs.com/o2team/archive/2021/08/26/15190818.html)
+- [深入理解TypeScript](https://jkchao.github.io/typescript-book-chinese/#why)
+- [简易DI容器实现](https://www.cnblogs.com/o2team/archive/2021/08/26/15190818.html)
