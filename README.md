@@ -50,15 +50,16 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## git规范
 >每次开发新功能，都应该新建一个单独的分支。<br>
-https://ruanyifeng.com/blog/2015/08/git-use-process.html<br>
-https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
+1. [Git 使用规范流程](https://ruanyifeng.com/blog/2015/08/git-use-process.html)
+2. [Git 教程](https://www.bookstack.cn/read/git-tutorial/README.md)
+
 
 ### 分支命名
 1. 以功能英文描述加短横杠，例:（image-upload-oss）；
 2. 以姓名拼音加横杠拼接，例:（lai-qi-bin）；
 
-### 提交规范
-1. 每次提交或新建分支先拉取合并master代码到当前分支；
+### [Git Commit 规范](https://segmentfault.com/a/1190000041878613)
+1. 每次提交或新建分支先拉取合并master代码到当前分支
 2. commit提交信息以（type(scope): desc）例：
    
     ```bash
@@ -79,7 +80,6 @@ https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
     chore：不修改src或者test的其余修改，例如构建过程或辅助工具的变动
 
     ```
-3. https://segmentfault.com/a/1190000041878613
 
 ### 常用git命令
 | Command                     | Description                                     |
@@ -111,38 +111,14 @@ https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md
 | git remote show name        | 列出某个主机的详细信息                               |
 
 
-## 学习资源：  
-**插件开发**
-    1.Chrome 插件开发<br>
-    https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html<br>
-    http://www.kkh86.com/it/chrome-extension-doc/extensions/api_index.html
+### 插件开发
+1. [Chrome插件开发攻略](https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html)
+2. [Chrome插件开发文档（中文版）](http://www.kkh86.com/it/chrome-extension-doc/extensions/api_index.html)
 
-**vue配置**
-    1.vue-cli3 全面配置<br>
-    https://gitee.com/leerayn/vue-cli3-config
+### vue
+ 1. [vue-cli3配置](https://gitee.com/leerayn/vue-cli3-config)
+    
 
-**TypeScript**
-1. 教程<br>
-   https://ts.xcatliu.com/advanced/class-and-interfaces.html
-
-2. 简易DI容器实现<br>
-    https://www.cnblogs.com/o2team/archive/2021/08/26/15190818.html
-
-**软件资源**
-    https://github.com/lanbao2021/share?unpf=1
-
-## 工具
-> 前端滑块验证<br>
-> https://www.cnblogs.com/queenDream/p/12760077.html
-
-
-# 软件破解
-
-## Navicat
-> https://www.cnblogs.com/no-celery/p/14824579.html
-
-**C/C++ 从零实现一个windows窗口（非常详细）**
-> https://blog.csdn.net/weixin_50964512/article/details/124140735?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-3-124140735-blog-79450832.pc_relevant_multi_platform_whitelistv1_exp2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-3-124140735-blog-79450832.pc_relevant_multi_platform_whitelistv1_exp2&utm_relevant_index=6
-
-**Nginx根据域名分发不同端口**
-> https://blog.csdn.net/m0_37190495/article/details/91442671?spm=1001.2101.3001.6650.14&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-14-91442671-blog-113682483.pc_relevant_multi_platform_whitelistv3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-14-91442671-blog-113682483.pc_relevant_multi_platform_whitelistv3&utm_relevant_index=20
+### TypeScript
+1. [深入理解TypeScript](https://jkchao.github.io/typescript-book-chinese/#why)
+2. [简易DI容器实现](https://www.cnblogs.com/o2team/archive/2021/08/26/15190818.html)
