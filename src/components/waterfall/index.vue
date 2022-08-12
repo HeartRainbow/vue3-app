@@ -1,11 +1,13 @@
 <template>
   <div class="waterfall-container">
     <ul class="waterfall" id="waterfall">
-      <li v-for="(img, index) in waterfallList" :key="index" class="waterfall-item"
-        :style="{ top: img.top + 'px', left: img.left + 'px', width: waterfallItemWidth + 'px', height: img.height }">
-        <img :src="img.src" alt="">
-        <p style="font-size: small;color: #666;margin: 4px;">{{ img.title }}</p>
-        <p style="font-size: x-small;color: #9e9e9e;margin: 4px;padding-bottom: 6px;">{{ img.info }}</p>
+      <li v-for="(item, index) in waterfallList" :key="index" class="waterfall-item"
+        :style="{ top: item.top + 'px', left: item.left + 'px', width: waterfallItemWidth + 'px', height: item.height + 'px' }">
+        <img v-lazy="item.src" :src="item.src" alt="">
+        <div class="footer">
+          <p style="font-size: small;color: #666;">{{ item.title }}</p>
+          <p style="font-size: x-small;color: #9e9e9e;margin: 4px 0;padding-bottom: 6px;">{{ item.desc }}</p>
+        </div>
       </li>
     </ul>
   </div>
@@ -44,9 +46,9 @@ export default class Waterfall extends Vue {
   ];
   waterfallList = [] as any[];
   imgList = [];
-  column = 3;
-  gap = 5;
-  waterfallItemWidth = 200;
+  column = 5;
+  gap = 20;
+  waterfallItemWidth = 0;
   waterfallDeviationHeight = [];
 
   created() {
@@ -65,8 +67,12 @@ export default class Waterfall extends Vue {
   //计算每个图片的宽度或者是列数
   calculationWidth() {
     let domWidth = document.getElementById("waterfall").offsetWidth;
+    console.log(domWidth);
+
     if (!this.waterfallItemWidth && this.column) {
-      this.waterfallItemWidth = (domWidth - this.gap * this.column) / this.column;
+      this.waterfallItemWidth = (domWidth - (this.gap * this.column)) / this.column;
+      console.log(this.waterfallItemWidth);
+
     } else if (this.waterfallItemWidth && !this.column) {
       this.column = Math.floor(domWidth / (this.waterfallItemWidth + this.gap))
     }
@@ -85,10 +91,10 @@ export default class Waterfall extends Vue {
       aImg.src = this.imgList[i];
       aImg.onload = aImg.onerror = () => {
         let imgData = {
-          height: this.waterfallItemWidth / aImg.width * aImg.height,
+          height: this.waterfallItemWidth / aImg.width * aImg.height + 55,
           src: this.imgList[i],
           title: '标题',
-          info: '详情说明：啦啦啦啦啦'
+          desc: '详情说明：啦啦啦啦啦'
         };
         this.waterfallList.push(imgData);
         this.rankImg(imgData);
@@ -119,6 +125,10 @@ export default class Waterfall extends Vue {
 </script>
 
 <style lang="scss" scoped>
+ul>li {
+  margin: 0;
+}
+
 .waterfall-container {
   width: 100%;
 }
@@ -134,15 +144,25 @@ export default class Waterfall extends Vue {
 
 .waterfall-item {
   /* 主要 */
+  float: left;
   position: absolute;
+  box-sizing: border-box;
 }
 
-.waterfall-item img {
-  /* 主要 */
-  /* width: auto;height: auto; */
-  width: 90%;
-  height: auto;
-  /* 次要 */
+.waterfall-item {
   border-radius: 6px;
+  overflow: hidden;
+
+  img {
+    /* width: auto;height: auto; */
+    width: 100%;
+    height: auto;
+  }
+
+  .footer {
+    background-color: #fff;
+    border: 2px solid #eee;
+    border-top: none;
+  }
 }
 </style>
