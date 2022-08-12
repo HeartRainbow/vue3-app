@@ -14,7 +14,6 @@ import store from '@/store';
 import directives from '@/utils/directives';
 
 import 'element-plus/dist/index.css';
-import '@/assets/styles/tailwind.css';
 import '@/assets/styles/loading.css';
 
 console.log(api);
