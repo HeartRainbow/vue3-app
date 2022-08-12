@@ -1,9 +1,7 @@
 import { createApp } from 'vue';
 import ElementPlus from 'element-plus';
-import liteTypeDI, { Container, Inject } from 'lite-typedi';
+import liteTypeDI from 'lite-typedi';
 
-import { ConfigLoaderBase } from '@app/contract';
-import { config } from '@app/model';
 import { initIoC } from '@app/services';
 
 import App from '@/App.vue';
@@ -23,19 +21,4 @@ console.log(api);
   await initIoC();
 
   createApp(App).use(store).use(router).use(globalComponents).use(liteTypeDI).use(directives).use(ElementPlus).mount('#app');
-
-  class Test {
-
-    @Inject()
-    public JsYamlConfigLoader: ConfigLoaderBase
-
-    public async call() {
-      return await this.JsYamlConfigLoader.load(
-        process.env.NODE_ENV === 'development' ? config.Development : config.Production
-      );
-    }
-  }
-
-  const t1 = Container.get(Test);
-  console.log(await t1.call());
 })();

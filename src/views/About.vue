@@ -7,13 +7,11 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 import HelloWorld from '@/components/HelloWorld.vue';
-import Card from '@/components/Card.vue';
 import { reactive } from 'vue';
 
 @Options({
   components: {
-    HelloWorld,
-    Card
+    HelloWorld
   }
 })
 export default class About extends Vue {
