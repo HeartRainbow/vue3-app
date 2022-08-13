@@ -2,15 +2,25 @@
   <div class="waterfall-container">
     <ul class="waterfall" id="waterfall">
       <li v-for="(item, index) in waterfallList" :key="index" class="waterfall-item"
-        :style="{ top: item.top + 'px', left: item.left + 'px', width: waterfallItemWidth + 'px', height: item.height + 'px' }">
-        <img v-lazy="item.src" :src="item.src" alt="">
+        :style="{ top: item.top + 'px', left: item.left + 'px', width: waterfallItemWidth + 'px' }">
+        <img v-lazy="item.src" :id="'img' + index" :src="item.src" alt="">
         <div class="footer">
-          <p style="font-size: small;color: #666;">{{ item.title }}</p>
-          <p style="font-size: x-small;color: #9e9e9e;margin: 4px 0;padding-bottom: 6px;">{{ item.desc }}</p>
+          <div class="footer-left">
+            <div>
+              <p>xiaomi</p>
+              <p>2022-08-20 10:00:20</p>
+            </div>
+            <img src="https://www.cn.nikon.com/assets/img/logo.svg" alt="">
+          </div>
+          <div class="footer-right">
+            <p>120mm f/4.1 1/100 iso100</p>
+            <p>xiamen</p>
+          </div>
         </div>
       </li>
     </ul>
   </div>
+  <div id="showInfo"></div>
 </template>
 
 <script lang="ts">
@@ -46,7 +56,7 @@ export default class Waterfall extends Vue {
   ];
   waterfallList = [] as any[];
   imgList = [];
-  column = 5;
+  column = 4;
   gap = 20;
   waterfallItemWidth = 0;
   waterfallDeviationHeight = [];
@@ -60,18 +70,16 @@ export default class Waterfall extends Vue {
   }
 
   mounted() {
-    console.log('I am Mounted');
     this.calculationWidth()
   }
+
 
   //计算每个图片的宽度或者是列数
   calculationWidth() {
     let domWidth = document.getElementById("waterfall").offsetWidth;
-    console.log(domWidth);
 
     if (!this.waterfallItemWidth && this.column) {
-      this.waterfallItemWidth = (domWidth - (this.gap * this.column)) / this.column;
-      console.log(this.waterfallItemWidth);
+      this.waterfallItemWidth = (domWidth - (this.gap * (this.column - 1))) / this.column;
 
     } else if (this.waterfallItemWidth && !this.column) {
       this.column = Math.floor(domWidth / (this.waterfallItemWidth + this.gap))
@@ -87,11 +95,11 @@ export default class Waterfall extends Vue {
   //图片预加载
   imgPreloading() {
     for (let i = 0; i < this.imgList.length; i++) {
-      let aImg = new Image();
+      const aImg = new Image();
       aImg.src = this.imgList[i];
-      aImg.onload = aImg.onerror = () => {
+      aImg.onload = () => {
         let imgData = {
-          height: this.waterfallItemWidth / aImg.width * aImg.height + 55,
+          height: this.waterfallItemWidth / aImg.width * aImg.height,
           src: this.imgList[i],
           title: '标题',
           desc: '详情说明：啦啦啦啦啦'
@@ -109,9 +117,9 @@ export default class Waterfall extends Vue {
     imgData.top = waterfallDeviationHeight[minIndex];
     imgData.left = minIndex * (gap + waterfallItemWidth);
     // waterfallDeviationHeight[minIndex] += imgData.height + waterfallImgBottom;// 不加文字的盒子高度
-    waterfallDeviationHeight[minIndex] += imgData.height + gap + 56;// 加了文字的盒子高度，留出文字的地方（这里设置56px）
-    console.log(imgData);
+    waterfallDeviationHeight[minIndex] += imgData.height + gap + 60;// 加了文字的盒子高度，留出文字的地方（这里设置56px）
   }
+
   /**
    * 找到最短的列并返回下标
    * @returns {number} 下标
@@ -130,7 +138,7 @@ ul>li {
 }
 
 .waterfall-container {
-  width: 100%;
+  padding: 20px;
 }
 
 .waterfall {
@@ -140,29 +148,78 @@ ul>li {
   position: relative;
   /* 次要：设置滚动条，要求固定高度 */
   overflow-y: auto;
+  margin: 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+    /* Chrome Safari */
+  }
 }
 
 .waterfall-item {
-  /* 主要 */
-  float: left;
   position: absolute;
   box-sizing: border-box;
-}
-
-.waterfall-item {
   border-radius: 6px;
   overflow: hidden;
+  border: 1px solid #eee;
+
 
   img {
     /* width: auto;height: auto; */
     width: 100%;
     height: auto;
+    display: block;
   }
 
   .footer {
+    width: 100%;
+    height: 60px;
     background-color: #fff;
-    border: 2px solid #eee;
-    border-top: none;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+
+    &-left {
+      width: 55%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      p:first-child {
+        color: #303133;
+        font-size: 14px;
+      }
+
+      p:last-child {
+        color: #909399;
+        font-size: small;
+      }
+
+      img {
+        width: 40px;
+      }
+    }
+
+    &-right {
+      width: 45%;
+      margin-left: 10px;
+      border-left: 1px solid #DCDFE6;
+
+      p:first-child {
+        color: #303133;
+        font-size: 14px;
+      }
+
+      p:last-child {
+        color: #909399;
+        font-size: small;
+      }
+    }
+
+
+    p {
+      margin: 0;
+    }
   }
 }
 </style>
