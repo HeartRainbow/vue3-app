@@ -1,4 +1,4 @@
-import XLSX from "xlsx";
+import { read, utils } from "xlsx";
 
 /**
  * 二进制文件转为JSON格式
@@ -20,11 +20,11 @@ export function binaryToJson(el: string) {
         reader.readAsBinaryString(file);
         reader.onload = e => {
             const data = e.target.result;
-            const excel = XLSX.read(data, {
+            const excel = read(data, {
                 type: "binary"
             });
             for (let i = 0; i < excel.SheetNames.length; i++) {
-                const newData = XLSX.utils.sheet_to_json(excel.Sheets[excel.SheetNames[i]]);
+                const newData = utils.sheet_to_json(excel.Sheets[excel.SheetNames[i]]);
                 // result.push(...newData);
                 result.push({
                     name: excel.SheetNames[i],
