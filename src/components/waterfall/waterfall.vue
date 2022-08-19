@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { isMobile } from '@/utils';
+import { Device } from '@/utils';
 import { Vue, Options, Prop, Ref, Watch } from 'vue-property-decorator';
 
 interface IImag {
@@ -107,7 +107,7 @@ export default class YourComponent extends Vue {
 
 
     get isMobile() {
-        return isMobile();
+        return Device.isMobile;
     }
     // 容器 waterfall 的宽度
     get waterfallWidth() {
