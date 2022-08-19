@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取UUID</title>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        span {
+            margin-top: 60px;
+        }
+
+        button {
+            margin-bottom: 30%;
+            background: #cccc;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+        }
+
+        #uuid {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <span>点击下方按钮获取UUID，并发送给相应负责人</span>
+    <div>
+        <p id="uuid"></p>
+        <button id="myBtn">获取UUID</button>
+    </div>
+</body>
+
+<script>
+
+    /** 是否为android */
+    const isAndroid =
+        window.navigator.userAgent.toLowerCase().indexOf('android') > -1;
+
+    /** 是否是ios */
+    const isIOS = !!window.navigator.userAgent.match(
+        /\(i[^;]+;( U;)? CPU.+Mac OS X/
+    );
+
+    //如果返回的是false说明当前操作系统是手机端，如果返回的是true则说明当前的操作系统是电脑端
+    function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone",
+            "SymbianOS", "Windows Phone",
+            "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    document.getElementById("myBtn").addEventListener("click", function () {
+        const content = localStorage.getItem('wechat_uid') ? localStorage.getItem('wechat_uid') : '无uuid';
+        copy(content);
+    });
+
+    document.getElementById("uuid").innerText = 'UUID：' + (localStorage.getItem('wechat_uid') ?? '无uuid');
+    document.getElementById("uuid").innerText = 'UUID：' + (localStorage.getItem('wechat_uid') || '无uuid');
+    document.getElementById("uuid").innerText = 'UUID：' + (localStorage.getItem('wechat_uid') ? localStorage.getItem('wechat_uid') : '无uuid');
+
+    const selectText = (textbox, startIndex, stopIndex) => {
+        if (textbox.createTextRange) {
+            const range = textbox.createTextRange();
+            range.collapse(true);
+            range.moveStart('character', startIndex);
+            range.moveEnd('character', stopIndex - startIndex);
+            range.select();
+        } else {
+            textbox.setSelectionRange(startIndex, stopIndex);
+            textbox.focus();
+        }
+    }
+
+    function copy(str) {
+        const ispc = IsPC();
+
+        if (ispc) {
+            const currentInput = document.createElement('input');
+            currentInput.value = str;
+            document.body.appendChild(currentInput);
+            currentInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(currentInput);
+            if (document.execCommand('copy')) {
+                alert('已复制到粘贴板');
+            } else {
+                alert('复制失败');
+            }
+        } else {
+            if (isAndroid) {
+                console.log('Android');
+                const currentInput = document.createElement('input');
+                currentInput.value = str;
+                document.body.appendChild(currentInput);
+                currentInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(currentInput);
+                if (document.execCommand('copy')) {
+                    alert('已复制到粘贴板');
+                } else {
+                    alert('复制失败');
+                }
+            }
+            if (isIOS) {
+                console.log('IOS');
+                const textString = str.toString();
+                let input = document.querySelector('#copy-input');
+                if (!input) {
+                    input = document.createElement('input');
+                    input.id = 'copy-input';
+                    input.readOnly = true;
+                    input.style.position = 'absolute';
+                    input.style.top = '-100px';
+                    input.style.left = '-1000px';
+                    input.style.zIndex = '-1000';
+                    document.body.appendChild(input);
+                }
+
+                input.value = textString
+                selectText(input, 0, textString.length)
+                if (document.execCommand('copy')) {
+                    document.execCommand('copy');
+                    alert('已复制到粘贴板');
+                } else {
+                    alert('复制失败');
+                }
+                input.blur();
+                document.body.removeChild(input);
+            }
+        }
+    }
+</script>
+
+</html>
