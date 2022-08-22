@@ -7,12 +7,28 @@
             <img v-lazy="row.src" :src="row.src" alt="">
           </div>
           <div class="mask">
+            <div class="mask-img" :style="{ background: 'url(' + row.src + ')' }"></div>
+            <div class="mask-footer">
+              <div class="mask-footer-left">
+                <div>
+                  <p>xiaomi</p>
+                  <p>2022-08-20</p>
+                </div>
+                <img class="logo" src="https://www.cn.nikon.com/assets/img/logo.svg" alt="">
+              </div>
+              <div class="mask-footer-right">
+                <p>120mm f/4.1 1/100 iso100</p>
+                <p>xiamen</p>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="mask">
             <p>镜头：太苦玛 55mm F1.8</p>
             <p>光圈：f1.4</p>
             <p>快门：1/250</p>
             <p>iso：250</p>
             <p>焦距：55mm</p>
-          </div>
+          </div> -->
         </div>
       </template>
     </Waterfall>
@@ -25,7 +41,6 @@ import { Options, Vue } from 'vue-class-component';
 
 import Waterfall from '@/components/waterfall/index.vue';
 import DragUpload from '@/components/drag-upload/index.vue';
-
 
 @Options({
   components: {
@@ -46,6 +61,7 @@ export default class Home extends Vue { }
 .waterfall-item {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   // position: absolute;
   // border-radius: 10px;
   // padding: 5px;
@@ -65,8 +81,8 @@ export default class Home extends Vue { }
 
 
 .box {
+  overflow: hidden;
   box-sizing: border-box;
-  font-size: 28px;
   border-radius: 6px;
   color: #fff;
   position: absolute;
@@ -76,10 +92,10 @@ export default class Home extends Vue { }
 
 .mask {
   box-sizing: border-box;
-  padding: 20px;
+  // padding: 20px;
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 0, 0, 0.7);
+  // background-color: rgb(0, 0, 0, 0.7);
   font-size: 14px;
   // filter: blur(2px);
   border-radius: 6px;
@@ -97,15 +113,15 @@ export default class Home extends Vue { }
   transition: 0.5s ease-in-out;
 }
 
-.mask p {
-  margin: 5px 0;
-}
+// .mask p {
+//   margin: 5px 0;
+// }
 
 .waterfall-item:hover .box {
   transform: rotateY(-180deg);
 }
 
-.waterfall-item:hover .mask {
+.waterfall-item .mask {
   transform: rotateY(-360deg);
 }
 
@@ -124,4 +140,75 @@ export default class Home extends Vue { }
 // .waterfall-item:nth-child(4) .mask {
 //   color: white;
 // }
+
+
+.mask {
+  border: 2px solid #E4E7ED;
+  overflow: hidden;
+
+  &-img {
+    width: auto;
+    height: 100%;
+    filter: blur(5px);
+  }
+
+  &-footer {
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+
+    &-left {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      div:first-child {
+        text-align: left;
+      }
+
+      p:first-child {
+        color: #303133;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      p:last-child {
+        color: #909399;
+        font-size: small;
+      }
+
+      img {
+        width: 40px;
+      }
+    }
+
+    &-right {
+      width: 50%;
+      margin-left: 10px;
+      border-left: 1px solid #DCDFE6;
+      text-align: right;
+
+      p:first-child {
+        color: #303133;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      p:last-child {
+        color: #909399;
+        font-size: small;
+      }
+    }
+
+
+    p {
+      margin: 0;
+    }
+  }
+}
 </style>

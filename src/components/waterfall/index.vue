@@ -96,7 +96,7 @@ export default class YourComponent extends Vue {
 
     imgsArr = imgsArr
     imgsArr_c = [] // 渲染的图片
-    imgCol = 5 // 图片列数
+    imgCol = 4 // 图片列数
     imgGap = 10 // 图片间间隔
     loadedCount = 0
     waterfallItemEls: HTMLDivElement[] // 所有 waterfall-item 元素
