@@ -1,225 +1,354 @@
 <template>
-  <div class="waterfall-container">
-    <ul class="waterfall" id="waterfall">
-      <li v-for="(item, index) in waterfallList" :key="index" class="waterfall-item"
-        :style="{ top: item.top + 'px', left: item.left + 'px', width: waterfallItemWidth + 'px' }">
-        <img v-lazy="item.src" :id="'img' + index" :src="item.src" alt="">
-        <div class="footer">
-          <div class="footer-left">
-            <div>
-              <p>xiaomi</p>
-              <p>2022-08-20 10:00:20</p>
-            </div>
-            <img src="https://www.cn.nikon.com/assets/img/logo.svg" alt="">
-          </div>
-          <div class="footer-right">
-            <p>120mm f/4.1 1/100 iso100</p>
-            <p>xiamen</p>
-          </div>
-        </div>
-      </li>
+    <ul class="waterfall" id="waterfall" ref="waterfall">
+        <li class="waterfall-item default-card-animation" v-for="(item, index) in imgsArr_c" :key="index"
+            :style="{ width: imgWidth + 'px', height: item._height + 'px' }" ref="waterfallItem">
+            <slot v-bind:row="item">
+                <img :data-src="item.src" />
+            </slot>
+        </li>
     </ul>
-  </div>
-  <div id="showInfo"></div>
+    <div class="loading">加载中...</div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { Device } from '@/utils';
+import { Vue, Options, Prop, Ref, Watch } from 'vue-property-decorator';
 
-@Options({
-  props: {
-    name: String
-  }
-})
-export default class Waterfall extends Vue {
-  imgData = [
-    'https://cdn.pixabay.com/photo/2021/12/14/09/22/animal-6870147__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/04/10/19/33/house-7124141__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/01/23/16/06/dog-6961236__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/06/09/04/53/ride-7251713__340.png',
-    'https://cdn.pixabay.com/photo/2022/08/04/09/12/sea-7364224__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/06/09/04/53/ride-7251713__340.png',
-    'https://cdn.pixabay.com/photo/2022/07/17/06/30/sunrise-7326601__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/04/10/19/33/house-7124141__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/08/01/09/32/daisies-7357753__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/08/05/18/50/houseplant-7367379__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/07/17/06/30/sunrise-7326601__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/07/24/17/55/wind-energy-7342177__480.jpg',
-    'https://cdn.pixabay.com/photo/2022/06/27/14/38/cat-7287671__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/07/21/06/56/ocean-7335499__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/08/05/18/50/houseplant-7367379__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/08/05/19/21/squirrel-7367445__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/06/27/14/38/cat-7287671__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/08/05/19/21/squirrel-7367445__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/04/18/21/27/pisa-7141606__340.jpg',
-    'https://cdn.pixabay.com/photo/2022/02/21/04/14/squirrel-7025721__340.jpg'
-  ];
-  waterfallList = [] as any[];
-  imgList = [];
-  column = 4;
-  gap = 20;
-  waterfallItemWidth = 0;
-  waterfallDeviationHeight = [];
+interface IImag {
+    src: string;
+    href: string;
+    info: string;
+    headerText?: string;
+    _height?: number;
+    _error?: boolean;
+}
 
-  created() {
-    // 触发入口
-    for (const item of this.imgData) {
-      // this.imgList.push(this.imgArr[Math.round(Math.random() * 8)]);// 图片随机显示
-      this.imgList.push(item);
+const imgsArr: IImag[] = [
+    {
+        src: "https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF",
+        href: "https://www.baidu.com",
+        info: "我是第一张图片",
+        headerText: '测试'
+    },
+    {
+        src: "https://t7.baidu.com/it/u=3631608752,3069876728&fm=193&f=GIF",
+        href: "https://www.baidu.com",
+        info: "一些图片描述文字asdasdasdasdasdasasdasd",
+        headerText: '测试'
+    },
+    {
+        src: "https://t7.baidu.com/it/u=2363269992,3614579621&fm=193&f=GIF",
+        href: "https://www.baidu.com",
+        info: "一些图片描述文字",
+    },
+    {
+        src: "https://t7.baidu.com/it/u=3357675082,868315873&fm=193&f=GIF",
+        href: "https://www.baidu.com",
+        info: "一些图片描述文字",
+    },
+
+    {
+        src: "https://t7.baidu.com/it/u=2783075563,3362558456&fm=193&f=GIF",
+
+        href: "https://www.baidu.com",
+        info: "一些图片描述文字",
+    },
+    {
+        src: "https://t7.baidu.com/it/u=3355440349,3059059541&fm=193&f=GIF",
+        href: "https://www.baidu.com",
+        info: "一些图片描述文字",
+    },
+    {
+        src: "https://t7.baidu.com/it/u=3845711835,2941194261&fm=193&f=GIF",
+        href: "https://www.baidu.com",
+        info: "一些图片描述文字",
+    },
+    {
+        src: "https://t7.baidu.com/it/u=2615688296,4269099018&fm=193&f=GIF",
+        href: "https://www.baidu.com",
+        info: "一些图片描述文字",
+    },
+    {
+        src: "https://t7.baidu.com/it/u=3355440349,3059059541&fm=193&f=GIF",
+        href: "https://www.baidu.com",
+        info: "一些图片描述文字",
+    },
+    {
+        src: "https://t7.baidu.com/it/u=3845711835,2941194261&fm=193&f=GIF",
+        href: "https://www.baidu.com",
+        info: "一些图片描述文字",
+    },
+    {
+        src: "https://t7.baidu.com/it/u=2615688296,4269099018&fm=193&f=GIF",
+        href: "https://www.baidu.com",
+        info: "一些图片描述文字",
+    },
+];
+
+@Options({})
+export default class YourComponent extends Vue {
+    @Prop(Array) source
+    @Prop({ default: 'default value', type: String }) propB
+    @Prop([String, Boolean]) propC
+
+    @Ref('waterfall') readonly waterfallRef!: HTMLDivElement
+    @Ref('waterfallItem') readonly waterfallItemRef!: HTMLDivElement[]
+
+    imgsArr = imgsArr
+    imgsArr_c = [] // 渲染的图片
+    imgCol = 5 // 图片列数
+    imgGap = 10 // 图片间间隔
+    loadedCount = 0
+    waterfallItemEls: HTMLDivElement[] // 所有 waterfall-item 元素
+    beginIndex = 0
+    colsHeightArr = [] // 保存当前每一列的高度
+    reachBottomDistance = 50 // 滚动触底距离，触发加载新图片
+    viewHeight = 0 // 窗口视图大小
+
+
+    get isMobile() {
+        return Device.isMobile;
     }
-  }
-
-  mounted() {
-    this.calculationWidth()
-  }
-
-
-  //计算每个图片的宽度或者是列数
-  calculationWidth() {
-    let domWidth = document.getElementById("waterfall").offsetWidth;
-
-    if (!this.waterfallItemWidth && this.column) {
-      this.waterfallItemWidth = (domWidth - (this.gap * (this.column - 1))) / this.column;
-
-    } else if (this.waterfallItemWidth && !this.column) {
-      this.column = Math.floor(domWidth / (this.waterfallItemWidth + this.gap))
+    // 容器 waterfall 的宽度
+    get waterfallWidth() {
+        return this.waterfallRef.clientWidth;
     }
-    //初始化偏移高度数组
-    this.waterfallDeviationHeight = new Array(this.column);
-    for (let i = 0; i < this.waterfallDeviationHeight.length; i++) {
-      this.waterfallDeviationHeight[i] = 0;
+    // 图片宽度
+    get imgWidth() {
+        return this.colWidth - 2 * this.imgGap;
     }
-    this.imgPreloading()
-  }
-
-  //图片预加载
-  imgPreloading() {
-    for (let i = 0; i < this.imgList.length; i++) {
-      const aImg = new Image();
-      aImg.src = this.imgList[i];
-      aImg.onload = () => {
-        let imgData = {
-          height: this.waterfallItemWidth / aImg.width * aImg.height,
-          src: this.imgList[i],
-          title: '标题',
-          desc: '详情说明：啦啦啦啦啦'
-        };
-        this.waterfallList.push(imgData);
-        this.rankImg(imgData);
-      }
+    // 列宽度
+    get colWidth() {
+        return this.waterfallWidth / this.colNum;
     }
-  }
+    // 列数
+    get colNum() {
+        return this.isMobile ? 2 : this.imgCol;
+    }
 
-  //瀑布流布局
-  rankImg(imgData) {
-    let { waterfallItemWidth, gap, waterfallDeviationHeight } = this;
-    let minIndex = this.filterMin();
-    imgData.top = waterfallDeviationHeight[minIndex];
-    imgData.left = minIndex * (gap + waterfallItemWidth);
-    // waterfallDeviationHeight[minIndex] += imgData.height + waterfallImgBottom;// 不加文字的盒子高度
-    waterfallDeviationHeight[minIndex] += imgData.height + gap + 60;// 加了文字的盒子高度，留出文字的地方（这里设置56px）
-  }
+    mounted() {
+        this.viewHeight = (document.documentElement.clientHeight == 0) ? document.body.clientHeight : document.documentElement.clientHeight;
+        this.preLoad();
+        this.scroll();
+    }
 
-  /**
-   * 找到最短的列并返回下标
-   * @returns {number} 下标
-   */
-  filterMin() {
-    const min = Math.min.apply(null, this.waterfallDeviationHeight);
-    return this.waterfallDeviationHeight.indexOf(min);
-  }
+    @Watch('imgsArr')
+    onImgsArrChanged(newVal) {
+        if (this.imgsArr_c.length > newVal.length || (this.imgsArr_c.length > 0 && newVal[0] && !newVal[0]._height))
+            this.reset();
+        this.preLoad();
+    }
+
+    // 预加载 设置图片宽高
+    preLoad() {
+        // forEach 无法通过 item 直接修改数组元素，需用数组下标修改
+        this.imgsArr.forEach((item, index) => {
+            if (index < this.loadedCount)
+                return;
+            if (!item.src) {
+                this.imgsArr[index]._height = 0;
+                ++this.loadedCount;
+                if (this.imgsArr.length === this.loadedCount) {
+                    this.preloaded();
+                }
+            } else {
+                // console.log(this.waterfallItemRef);
+
+                let img = new Image();
+                img.src = item.src;
+                img.onload = img.onerror = (e: Event) => {
+                    // 若加载失败则设置图片高度与宽度一致，加载成功则动态计算图片高度
+                    this.imgsArr[index]._height = e.type === "load" ? Math.round(this.imgWidth * (img.height / img.width)) : this.imgWidth
+                    if (e.type === "error") {
+                        this.imgsArr[index]._error = true;
+                    }
+                    ++this.loadedCount;
+                    if (this.imgsArr.length === this.loadedCount) {
+                        this.preloaded();
+                    }
+                }
+            }
+        })
+    }
+
+    preloaded() {
+        this.imgsArr_c = [].concat(this.imgsArr);
+        this.$nextTick(() => {
+            this.waterfall();
+        });
+    }
+
+    // waterfall 布局
+    waterfall() {
+        // 等到整个视图都渲染完毕再执行
+        this.waterfallItemEls = this.waterfallItemRef;
+        if (!this.waterfallItemEls)
+            return;
+        let top, left, height;
+        if (this.beginIndex === 0)
+            this.colsHeightArr = []
+        for (let i = this.beginIndex; i < this.waterfallItemEls.length; ++i) {
+            if (!this.waterfallItemEls[i])
+                return;
+            height = this.waterfallItemEls[i].offsetHeight + 2 * this.imgGap;
+            // console.log('height>>>>>>', this.waterfallItemEls[i].clientHeight);
+
+            // 第一行
+            if (i < this.colNum) {
+                this.colsHeightArr.push(height);
+                top = 0;
+                left = i * this.colWidth;
+            } else {
+                // 找到最低的高度和其索引
+                let minHeight = Math.min.apply(null, this.colsHeightArr);
+                let minIdx = this.colsHeightArr.indexOf(minHeight);
+                top = minHeight;
+                left = minIdx * this.colWidth;
+                this.colsHeightArr[minIdx] += height;
+            }
+            // 设置 waterfall-item 位置
+            this.waterfallItemEls[i].style.top = top + "px";
+            this.waterfallItemEls[i].style.left = left + "px";
+            // 当前图片在窗口内，则加载
+            if (top < this.viewHeight) {
+                let imgEl = this.waterfallItemEls[i].children[0] as HTMLImageElement;
+                imgEl.src = imgEl.getAttribute("data-src");
+                imgEl.style.opacity = '1';
+                imgEl.style.transform = "scale(1)";
+            }
+        }
+        this.beginIndex = this.waterfallItemEls.length;
+    }
+
+    reset() {
+        this.imgsArr_c = [];
+        this.beginIndex = 0;
+        this.loadedCount = 0;
+    }
+
+    /**
+     * 滚动触底事件
+     */
+    scrollFn() {
+        let minHeight = Math.min.apply(null, this.colsHeightArr);
+        // 滚动条滚动的高度
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        // 到达最底层的高度最低的一列，则触发 moreData 方法
+        if (
+            scrollTop + this.viewHeight >
+            minHeight - this.reachBottomDistance
+        ) {
+            this.moreData();
+        }
+        // 图片懒加载
+        this.waterfallItemEls.forEach((r) => {
+            let imgEl = r.children[0] as HTMLImageElement;
+            // 若已加载，则跳过
+            if (imgEl.src)
+                return;
+            // 当前图片所处的高度
+            let topstr = r.style.top;
+            const top = Number.parseFloat(topstr.slice(0, topstr.length - 2));
+            // 图片已到达可视范围，则加载
+            if (scrollTop + this.viewHeight > top) {
+                imgEl.src = imgEl.getAttribute("data-src");
+                imgEl.style.opacity = '1';
+                imgEl.style.transform = "scale(1)";
+            }
+        })
+    }
+
+    /**
+     * 滚动监听
+     */
+    scroll() {
+        // window.onscroll = this.throttle(this.scrollFn, 500);
+        this.waterfallRef.onscroll = this.throttle(this.staScrollFun, 500);
+
+    }
+
+    /**
+     * 加载更多数据
+     */
+    moreData() {
+        this.imgsArr = this.imgsArr.concat(this.imgsArr);
+    }
+
+    staScrollFun() {
+        const { offsetHeight, scrollTop, scrollHeight } = this.waterfallRef;
+        if (offsetHeight + scrollTop >= scrollHeight) {
+            //触发事件
+            console.log('滚动触底...');
+            // this.moreData()
+        }
+    }
+
+
+    /**
+     * 节流函数
+     */
+    throttle(fn, time) {
+        let canRun = true;
+        return function () {
+            if (!canRun)
+                return;
+            canRun = false;
+            setTimeout(() => {
+                fn.apply(this);
+                canRun = true;
+            }, time)
+        }
+    }
 }
 
 </script>
 
 <style lang="scss" scoped>
-ul>li {
-  margin: 0;
-}
-
-.waterfall-container {
-  padding: 20px;
-}
-
-.waterfall {
-  /* 主要 */
-  width: 100%;
-  height: 400px;
-  position: relative;
-  /* 次要：设置滚动条，要求固定高度 */
-  overflow-y: auto;
-  margin: 0;
-
-  &::-webkit-scrollbar {
-    display: none;
-    /* Chrome Safari */
-  }
-}
-
-.waterfall-item {
-  position: absolute;
-  box-sizing: border-box;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid #eee;
-
-
-  img {
-    /* width: auto;height: auto; */
+#waterfall {
     width: 100%;
-    height: auto;
-    display: block;
-  }
+    height: 100%;
+    position: relative;
+    margin: 0;
+    overflow: auto;
 
-  .footer {
-    width: 100%;
-    height: 60px;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
+    @keyframes show-card {
+        0% {
+            transform: scale(0.5);
+        }
 
-    &-left {
-      width: 55%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      p:first-child {
-        color: #303133;
-        font-size: 14px;
-      }
-
-      p:last-child {
-        color: #909399;
-        font-size: small;
-      }
-
-      img {
-        width: 40px;
-      }
+        100% {
+            transform: scale(1);
+        }
     }
 
-    &-right {
-      width: 45%;
-      margin-left: 10px;
-      border-left: 1px solid #DCDFE6;
+    .waterfall-item {
+        width: 100%;
+        position: absolute;
+        border-radius: 10px;
+        margin: 0;
+        // padding: 5px;
+        // padding-left: 0;
 
-      p:first-child {
-        color: #303133;
-        font-size: 14px;
-      }
 
-      p:last-child {
-        color: #909399;
-        font-size: small;
-      }
+        img {
+            width: 100%;
+            border-radius: 10px;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.6s;
+            transition-delay: 0.1s;
+        }
     }
 
-
-    p {
-      margin: 0;
+    .default-card-animation {
+        animation: show-card 0.4s;
+        transition: left 0.6s top 0.6s;
+        transition-delay: 0.1s;
     }
-  }
+}
+
+.loading {
+    height: 40px;
+    background-color: rgb(126, 164, 245);
 }
 </style>
