@@ -12,7 +12,8 @@
 		"build:dev": "ts-node ./app/services/version/index.ts && vue-cli-service build --mode development",
 		"build:prod": "vue-cli-service build --mode production",
 		"version": "ts-node ./app/services/version/index.ts",
-		"exportExecl": "ts-node ./src/utils/file-loader/json-to-execl.ts"
+		"exportExecl": "ts-node ./src/utils/file-loader/json-to-execl.ts",
+		"date": "ts-node ./src/utils/date-loader/index.ts"
 	},
 	"dependencies": {
 		"axios": "^0.27.2",
