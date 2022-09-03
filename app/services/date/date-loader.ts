@@ -1,5 +1,7 @@
 import { DateLoaderBase } from "@app/contract/date-loader-base";
+import { Service } from "lite-typedi";
 
+@Service()
 export class DateLoader extends DateLoaderBase {
     constructor() {
         super()

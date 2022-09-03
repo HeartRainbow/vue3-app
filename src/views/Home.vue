@@ -18,6 +18,8 @@ import { Options, Vue } from 'vue-class-component';
 
 import Waterfall from '@/components/waterfall/index.vue';
 import DragUpload from '@/components/drag-upload/index.vue';
+import { DateLoader } from '@app/index';
+import { Inject } from 'lite-typedi';
 
 @Options({
   components: {
@@ -25,7 +27,15 @@ import DragUpload from '@/components/drag-upload/index.vue';
     DragUpload
   }
 })
-export default class Home extends Vue { }
+export default class Home extends Vue {
+
+  @Inject()
+  dateLoader: DateLoader
+
+  mounted() {
+    console.log('123', this.dateLoader.unix());
+  }
+}
 
 </script>
 
