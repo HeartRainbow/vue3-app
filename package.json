@@ -16,6 +16,7 @@
 		"date": "ts-node ./src/utils/date-loader/index.ts"
 	},
 	"dependencies": {
+		"@vuemap/vue-amap": "^1.1.13",
 		"axios": "^0.27.2",
 		"class-validator": "^0.13.1",
 		"core-js": "^3.6.5",
