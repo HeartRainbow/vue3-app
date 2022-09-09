@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <Header />
+
     <Waterfall>
       <template #default="{ row }">
         <div class="waterfall-item-inner">
@@ -17,6 +19,7 @@
 import { Options, Vue } from 'vue-class-component';
 
 import Waterfall from '@/components/waterfall/index.vue';
+import Header from './header/index.vue';
 import DragUpload from '@/components/drag-upload/index.vue';
 import { DateLoader } from '@app/index';
 import { Inject } from 'lite-typedi';
@@ -24,7 +27,8 @@ import { Inject } from 'lite-typedi';
 @Options({
   components: {
     Waterfall,
-    DragUpload
+    DragUpload,
+    Header
   }
 })
 export default class Home extends Vue {
@@ -52,7 +56,7 @@ export default class Home extends Vue {
   transition: all 1s ease;
 
   &:hover {
-    transform: rotateX(0deg) rotateY(0deg) rotate(0deg) translate(15px, 0px);
+    transform: rotateX(0deg) rotateY(0deg) rotate(0deg) translate(4px, 4px);
     opacity: 0.6;
   }
 }
