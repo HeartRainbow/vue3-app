@@ -329,7 +329,6 @@ export default class YourComponent extends Vue {
         // padding: 5px;
         // padding-left: 0;
 
-
         img {
             width: 100%;
             border-radius: 10px;

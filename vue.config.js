@@ -56,7 +56,7 @@ module.exports = {
                 args[0].cdn = doc[mode].cdn;
             }
             args[0].title = "vue3-app";
-            args[0].icon = "https://cdn3.iconfinder.com/data/icons/pokemon-go-3/512/pokemon_go_play_game_charcter-128.png";
+            args[0].icon = "https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_29-512.png";
             return args;
         });
 
@@ -121,7 +121,7 @@ module.exports = {
         );
 
         // 展示打包图形化信息
-        config.plugins.push(new BundleAnalyzer());
+        // config.plugins.push(new BundleAnalyzer());
 
         // 公共代码抽离
         config.optimization = {

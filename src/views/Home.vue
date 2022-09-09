@@ -2,7 +2,7 @@
   <div class="home">
     <Waterfall>
       <template #default="{ row }">
-        <div class="waterfall-item">
+        <div class="waterfall-item-inner">
           <div class="box">
             <img v-lazy="row.src" :src="row.src" alt="">
           </div>
@@ -45,15 +45,39 @@ export default class Home extends Vue {
   height: 100%;
 }
 
-.waterfall-item {
+:deep(.waterfall-item) {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: all 1s ease;
+
+  &:hover {
+    transform: rotateX(0deg) rotateY(0deg) rotate(0deg) translate(15px, 0px);
+    opacity: 0.6;
+  }
+}
+
+.waterfall-item-inner {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  // position: absolute;
-  // border-radius: 10px;
-  // padding: 5px;
-  // padding-left: 0;
+  transition: all 1s ease;
 
+  &:hover:after {
+    transform: translateX(100%);
+    transition: all 1.5s ease-in-out;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    background-image: linear-gradient(60deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0) 80%);
+  }
 
   img {
     width: 100%;
@@ -100,8 +124,7 @@ export default class Home extends Vue {
   transition: 0.5s ease-in-out;
 }
 
-// .waterfall-item:hover .box {
+// .waterfall-item-inner:hover .box {
 //   transform: rotateY(-180deg);
 // }
-
 </style>
