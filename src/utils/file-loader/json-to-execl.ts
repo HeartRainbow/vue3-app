@@ -30,8 +30,8 @@ export function jsonToExcel(source: ISource[], execlName = 'execl表格') {
     // 新建book
     const wb = utils.book_new()
 
-    source.forEach(r => {
-        let { sheetName = 'Sheet', data = [], fields = [], alias = {} } = r
+    source.forEach((r, i) => {
+        let { sheetName = `Sheet${i + 1}`, data = [], fields = [], alias = {} } = r
 
         // 需要显示的字段
         if (!fields || fields.length === 0) {
