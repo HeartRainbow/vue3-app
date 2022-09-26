@@ -2,18 +2,36 @@
 import { utils, writeFile } from "xlsx";
 
 interface ISource {
+    /**
+     * 工作表名称
+     */
     sheetName?: string;
+    /**
+     * 数据列表
+     */
     data: any[];
+    /**
+     * 过滤字段
+     */
     fields?: string[];
+    /**
+     * 表头名称
+     */
     alias: { [key: string]: string };
 }
 
-export function jsonToExcel(source: ISource[], title = 'execl表格') {
+/**
+ * JSON数据导出EXECL
+ * 
+ * @param source 待处理数据
+ * @param name 表名
+ */
+export function jsonToExcel(source: ISource[], execlName = 'execl表格') {
     // 新建book
     const wb = utils.book_new()
 
     source.forEach(r => {
-        let { sheetName = 'sheet1', data = [], fields = [], alias = {} } = r
+        let { sheetName = 'Sheet', data = [], fields = [], alias = {} } = r
 
         // 需要显示的字段
         if (!fields || fields.length === 0) {
@@ -72,5 +90,5 @@ export function jsonToExcel(source: ISource[], title = 'execl表格') {
     })
 
     // 写文件(book,xlsx文件名称)
-    writeFile(wb, `${title}.xlsx`)
+    writeFile(wb, `${execlName}.xlsx`)
 }
