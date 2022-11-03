@@ -32,7 +32,7 @@ export class InstanceInterceptor {
   */
   public response() {
     this.m_Instance.interceptors.response.use(
-      this.m_Interceptor?.requestInterceptor,
+      this.m_Interceptor?.responseInterceptor,
       this.m_Interceptor?.responseInterceptorCatch,
     );
   }

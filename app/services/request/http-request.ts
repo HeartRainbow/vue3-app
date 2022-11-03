@@ -49,7 +49,7 @@ export class HttpRequest {
    * @param params 请求参数
    * @returns 
    */
-   public get<T>(url: string, params?: object): Promise<IResponseData<T>> {
+   public get<T>(url: string, params?: any): Promise<IResponseData<T>> {
     return this.m_Instance.get(url, { params });
   }
 
@@ -60,8 +60,8 @@ export class HttpRequest {
    * @param params 请求参数
    * @returns 
    */
-   public post<T>(url: string, params?: object): Promise<IResponseData<T>> {
-    return this.m_Instance.post(url, params);
+   public post<T>(url: string, params?: any, config?: AxiosRequestConfig): Promise<IResponseData<T>> {
+    return this.m_Instance.post(url, params, config);
   }
 
   /**
@@ -71,8 +71,8 @@ export class HttpRequest {
    * @param params 请求参数
    * @returns 
    */
-   public put<T>(url: string, params?: object): Promise<IResponseData<T>> {
-    return this.m_Instance.put(url, params);
+   public put<T>(url: string, params?: any, config?: AxiosRequestConfig): Promise<IResponseData<T>> {
+    return this.m_Instance.put(url, params, config);
   }
 
   /**
@@ -82,7 +82,7 @@ export class HttpRequest {
    * @param params 请求参数
    * @returns 
    */
-   public delete<T>(url: string, params?: object): Promise<IResponseData<T>> {
+   public delete<T>(url: string, params?: any): Promise<IResponseData<T>> {
     return this.m_Instance.delete(url, { params });
   }
 }
