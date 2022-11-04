@@ -12,7 +12,9 @@ for (const key of files.keys()) {
 export default {
     install(app) {
       Object.keys(directives).forEach((key) => {
-        app.directive(key, directives[key])
+        console.log(key, directives[key]);
+        
+        app.directive(key, directives[key]);
       });
     }
 }

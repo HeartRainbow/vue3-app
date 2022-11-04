@@ -1,8 +1,21 @@
 <template>
   <div class="home">
-    <Header />
+    <!-- <Header /> -->
+    <el-button @click="dialogVisible = !dialogVisible">弹窗</el-button>
+    <div v-drag2 class="rect">
+      hahahah1
+    </div>
+    <!-- <div v-drag="{DragButton:'.el-dialog__header',DragVindow:'.el-dialog'}" > -->
+    <div v-drag>
+      <el-dialog title="弹窗" v-model="dialogVisible" :close-on-click-modal="false" width="75%">
+        <div style="color: darkorange;font-size: 64px;">
+          弹窗
+        </div>
+      </el-dialog>
+    </div>
 
-    <Waterfall>
+
+    <!-- <Waterfall>
       <template #default="{ row }">
         <div class="waterfall-item-inner">
           <div class="box">
@@ -10,8 +23,13 @@
           </div>
         </div>
       </template>
-    </Waterfall>
+    </Waterfall> -->
     <!-- <DragUpload :propA="222"/> -->
+
+    <div class="content">
+      <button @click="changeTheme('light')">light</button>
+      <button @click="changeTheme('dark')">dark</button>
+    </div>
   </div>
 </template>
 
@@ -36,6 +54,14 @@ export default class Home extends Vue {
   @Inject()
   dateLoader: DateLoader
 
+  dialogVisible = false
+
+  changeTheme(theme) {
+    console.log(theme);
+    window.document.documentElement.setAttribute('data-theme', theme)
+  }
+
+
   mounted() {
     console.log('123', this.dateLoader.unix());
   }
@@ -44,6 +70,19 @@ export default class Home extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/variable.scss";
+@import "@/styles/mixin.scss";
+
+.content {
+  height: 80px;
+  line-height: 80 px;
+  text-align: center;
+  @include text-color(text-1);
+  @include bg-color(text-2);
+}
+
+
+
 .home {
   width: 100%;
   height: 100%;
@@ -131,4 +170,12 @@ export default class Home extends Vue {
 // .waterfall-item-inner:hover .box {
 //   transform: rotateY(-180deg);
 // }
+
+
+.rect {
+  width: 100px;
+  height: 100px;
+  background-color: peru;
+  position: absolute;
+}
 </style>
