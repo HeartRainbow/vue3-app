@@ -61,7 +61,6 @@ export default class Home extends Vue {
     window.document.documentElement.setAttribute('data-theme', theme)
   }
 
-
   mounted() {
     console.log('123', this.dateLoader.unix());
   }
