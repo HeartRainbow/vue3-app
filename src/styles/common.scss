@@ -1,0 +1,38 @@
+@import './variable.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  --scale: 1;
+  width: $design_width;
+  height: $design_height;
+}
+
+body {
+  transform: scale(var(--scale));
+  transform-origin: 0 0;
+  transition: 0.3s;
+  // background: rgba(255, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar{
+  // display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul>li {
+  list-style: none;
+}
+
+
+[v-cloak] {
+  display: none;
+}
