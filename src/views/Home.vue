@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <!-- <Header /> -->
+    <Header />
     <el-button @click="dialogVisible = !dialogVisible">弹窗</el-button>
     <div v-drag2 class="rect">
       hahahah1
@@ -26,10 +26,10 @@
     </Waterfall> -->
     <!-- <DragUpload :propA="222"/> -->
 
-    <div class="content">
+    <!-- <div class="content">
       <button @click="changeTheme('light')">light</button>
       <button @click="changeTheme('dark')">dark</button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -37,7 +37,8 @@
 import { Options, Vue } from 'vue-class-component';
 
 import Waterfall from '@/components/waterfall/index.vue';
-import Header from './header/index.vue';
+// import Header from './header/index.vue';
+import Header from '@/components/header.vue';
 import DragUpload from '@/components/drag-upload/index.vue';
 import { DateLoader } from '@app/index';
 import { Inject } from 'lite-typedi';
