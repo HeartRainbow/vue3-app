@@ -37,8 +37,8 @@
 import { Options, Vue } from 'vue-class-component';
 
 import Waterfall from '@/components/waterfall/index.vue';
-// import Header from './header/index.vue';
-import Header from '@/components/header.vue';
+import Header from './header/index.vue';
+// import Header from '@/components/header.vue';
 import DragUpload from '@/components/drag-upload/index.vue';
 import { DateLoader } from '@app/index';
 import { Inject } from 'lite-typedi';

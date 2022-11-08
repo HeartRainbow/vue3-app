@@ -6,13 +6,13 @@ body {
   --scale: 1;
   width: $design_width;
   height: $design_height;
+  position: relative;
 }
 
 body {
   transform: scale(var(--scale));
   transform-origin: 0 0;
   transition: 0.3s;
-  // background: rgba(255, 0, 0, 0.3);
 }
 
 body::-webkit-scrollbar{

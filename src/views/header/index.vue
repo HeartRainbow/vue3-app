@@ -1,12 +1,23 @@
 <template>
     <div class="header">
-        <div class="header-nav">
-            <h1>Rainbow</h1>
-            <h2>JOIN US</h2>
-        </div>
-        <div class="header-main">
-            <el-input v-model="keyword" placeholder="Please input" />
-        </div>
+        <el-menu default-active="1" class="el-menu-demo" mode="horizontal" background-color="#545c64"
+            text-color="#fff" active-text-color="#ffd04b" @select="handleSelect">
+            <el-menu-item index="1">Processing Center</el-menu-item>
+            <el-sub-menu index="2">
+                <template #title>Workspace</template>
+                <el-menu-item index="2-1">item one</el-menu-item>
+                <el-menu-item index="2-2">item two</el-menu-item>
+                <el-menu-item index="2-3">item three</el-menu-item>
+                <el-sub-menu index="2-4">
+                    <template #title>item four</template>
+                    <el-menu-item index="2-4-1">item one</el-menu-item>
+                    <el-menu-item index="2-4-2">item two</el-menu-item>
+                    <el-menu-item index="2-4-3">item three</el-menu-item>
+                </el-sub-menu>
+            </el-sub-menu>
+            <el-menu-item index="3" disabled>Info</el-menu-item>
+            <el-menu-item index="4">Orders</el-menu-item>
+        </el-menu>
     </div>
 </template>
 
@@ -20,6 +31,10 @@ export default class Header extends Vue {
     @Prop([String, Boolean]) propC;
 
     keyword = '';
+
+    handleSelect(key: string, keyPath: string[]) {
+        console.log(key, keyPath)
+    }
 
 }
 </script>
