@@ -21,8 +21,6 @@ export default {
       const { width, height } = this;
       const wh = window.innerHeight / height;
       const ww = window.innerWidth / width;
-      // const wh = document.documentElement.clientHeight / height;
-      // const ww = document.documentElement.clientWidth / width;
       // return ww < wh ? ww : wh;
       return ww;
     },
@@ -50,6 +48,8 @@ export default {
 
 <style lang="scss">
 @import '@/styles/common.scss';
+@import "@/styles/variable.scss";
+@import "@/styles/mixin.scss";
 
 #app {
   height: 100%;

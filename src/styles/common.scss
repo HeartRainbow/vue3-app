@@ -6,6 +6,7 @@ body {
   --scale: 1;
   width: $design_width;
   height: $design_height;
+  // box-sizing: border-box;
   position: relative;
 }
 
