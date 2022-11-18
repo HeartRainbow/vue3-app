@@ -1,18 +1,17 @@
 <template>
   <div class="home">
-    <Header />
-    <el-button @click="dialogVisible = !dialogVisible">弹窗</el-button>
-    <div v-drag2 class="rect">
-      hahahah1
-    </div>
+    <!-- <Header /> -->
+    <el-button @click="handleClick">弹窗</el-button>
+    <Dialog v-model="dialogVisible" />
+
     <!-- <div v-drag="{DragButton:'.el-dialog__header',DragVindow:'.el-dialog'}" > -->
-    <div v-drag>
+    <!-- <div v-drag>
       <el-dialog title="弹窗" v-model="dialogVisible" :close-on-click-modal="false" width="75%">
         <div style="color: darkorange;font-size: 64px;">
           弹窗
         </div>
       </el-dialog>
-    </div>
+    </div> -->
 
 
     <!-- <Waterfall>
@@ -30,42 +29,65 @@
       <button @click="changeTheme('light')">light</button>
       <button @click="changeTheme('dark')">dark</button>
     </div> -->
+
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-
 import Waterfall from '@/components/waterfall/index.vue';
 import Header from './header/index.vue';
 // import Header from '@/components/header.vue';
 import DragUpload from '@/components/drag-upload/index.vue';
-import { DateLoader } from '@app/index';
-import { Inject } from 'lite-typedi';
+import Dialog from '@/components/Dialog/dialog.vue';
+import { ref } from 'vue';
 
-@Options({
+export default {
+  name: 'Home',
   components: {
     Waterfall,
     DragUpload,
-    Header
-  }
-})
-export default class Home extends Vue {
+    Header,
+    Dialog
+  },
+  setup() {
 
-  @Inject()
-  dateLoader: DateLoader
+    const dialogVisible = ref(false);
 
-  dialogVisible = false
+    const changeTheme = (theme) => {
+      console.log(theme);
+      window.document.documentElement.setAttribute('data-theme', theme);
+    }
 
-  changeTheme(theme) {
-    console.log(theme);
-    window.document.documentElement.setAttribute('data-theme', theme)
-  }
+    const handleClick = () => {
+      dialogVisible.value = !dialogVisible.value;
+      console.log(dialogVisible.value);
+    }
 
-  mounted() {
-    console.log('123', this.dateLoader.unix());
+    return {
+      dialogVisible,
+      changeTheme,
+      handleClick,
+    }
   }
 }
+
+
+// export default class Home extends Vue {
+
+//   @Inject()
+//   dateLoader: DateLoader
+
+//   dialogVisible = false
+
+//   changeTheme(theme) {
+//     console.log(theme);
+//     window.document.documentElement.setAttribute('data-theme', theme)
+//   }
+
+//   mounted() {
+//     console.log('123', this.dateLoader.unix());
+//   }
+// }
 
 </script>
 
